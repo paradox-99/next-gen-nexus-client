@@ -84,7 +84,7 @@ const Navbar = () => {
                     !user && <Link to={'/signin'}><CustomButton>Sign in</CustomButton></Link>
                 }
                 {
-                    <><Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
+                    user && <><Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
                         <Tooltip title={user?.displayName}>
                             <IconButton
                                 onClick={handleClick}
