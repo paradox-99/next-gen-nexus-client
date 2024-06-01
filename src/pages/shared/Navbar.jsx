@@ -1,19 +1,29 @@
 import { Link, NavLink } from "react-router-dom";
 import { HiMenu } from "react-icons/hi";
 import React from "react";
-import { Box, Button, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
-import { Home } from "@mui/icons-material";
+import { Box, Button, Divider, Drawer, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Menu, MenuItem, Tooltip, Typography } from "@mui/material";
+import { Home, Logout } from "@mui/icons-material";
 import { SiBmcsoftware } from "react-icons/si";
 import { CustomButton } from "../../components/basic/basicComponents";
+import useAuth from "../../hooks/useAuth";
+import { TbLayoutDashboardFilled } from "react-icons/tb";
+import { FaHome } from "react-icons/fa";
 
 const Navbar = () => {
 
-    const user = false;
-
+    const { user, logOut } = useAuth();
     const [open, setOpen] = React.useState(false);
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const Open = Boolean(anchorEl);
 
     const toggleDrawer = (newOpen) => () => {
         setOpen(newOpen);
+    };
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+        setAnchorEl(null);
     };
 
     const DrawerList = (
@@ -22,7 +32,7 @@ const Navbar = () => {
                 <ListItem key={"Home"} disablePadding style={{ fontFamily: [''].join(',') }}>
                     <ListItemButton to={'/'}>
                         <ListItemIcon>
-                            <Home />
+                        <FaHome />
                         </ListItemIcon>
                         <ListItemText style={{ fontFamily: ['"Poppins"'] }} primary={"Home"} />
                     </ListItemButton>
@@ -36,13 +46,13 @@ const Navbar = () => {
                     </ListItemButton>
                 </ListItem>
                 {
-                    user && <ListItem key={"Products"} disablePadding>
+                    !user && <ListItem key={"Sign in"} disablePadding>
                         <ListItemButton>
-                            <NavLink to={'/products'}></NavLink>
+                            <NavLink to={'/signin'}></NavLink>
                             <ListItemIcon>
                                 <SiBmcsoftware />
                             </ListItemIcon>
-                            <ListItemText primary={"Products"} />
+                            <ListItemText primary={"Sign in"} />
                         </ListItemButton>
                     </ListItem>
                 }
@@ -65,12 +75,78 @@ const Navbar = () => {
             <div className="flex">
                 <Link to={'/'} className="font-montserrat font-bold text-2xl smm:text-xl lg:text-3xl flex md:hidden">NextGenNexus</Link>
                 <ul className="md:flex hidden gap-10 font-poppins text-xl">
-                    <li><NavLink to={'/'} className="flex items-center"><Home />Home</NavLink></li>
-                    <li><NavLink to={'/products'} className="flex items-center" items-center><SiBmcsoftware />Products</NavLink></li>
+                    <li><NavLink to={'/'} className="flex gap-1 items-center"><FaHome />Home</NavLink></li>
+                    <li><NavLink to={'/products'} className="flex items-center gap-1" items-center><SiBmcsoftware />Products</NavLink></li>
                 </ul>
             </div>
             <div>
-                <Link to={'/signin'}><CustomButton>Sign in</CustomButton></Link>
+                {
+                    !user && <Link to={'/signin'}><CustomButton>Sign in</CustomButton></Link>
+                }
+                {
+                    <><Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
+                        <Tooltip title={user?.displayName}>
+                            <IconButton
+                                onClick={handleClick}
+                                size="small"
+                                sx={{ ml: 2 }}
+                                aria-controls={Open ? 'account-menu' : undefined}
+                                aria-haspopup="true"
+                                aria-expanded={Open ? 'true' : undefined}
+                            >
+                                <img src={user?.photoURL} alt="" className="rounded-full w-12" />
+                            </IconButton>
+                        </Tooltip>
+                    </Box>
+                        <Menu
+                            anchorEl={anchorEl}
+                            id="account-menu"
+                            open={Open}
+                            onClose={handleClose}
+                            onClick={handleClose}
+                            PaperProps={{
+                                elevation: 0,
+                                sx: {
+                                    overflow: 'visible',
+                                    filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+                                    mt: 1.5,
+                                    '& .MuiAvatar-root': {
+                                        width: 32,
+                                        height: 32,
+                                        ml: -0.5,
+                                        mr: 1,
+                                    },
+                                    '&::before': {
+                                        content: '""',
+                                        display: 'block',
+                                        position: 'absolute',
+                                        top: 0,
+                                        right: 14,
+                                        width: 10,
+                                        height: 10,
+                                        bgcolor: 'background.paper',
+                                        transform: 'translateY(-50%) rotate(45deg)',
+                                        zIndex: 0,
+                                    },
+                                },
+                            }}
+                            transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+                            anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+                        >
+                            <Typography sx={{ paddingLeft: 2, paddingRight: 5 }}>{user?.displayName}</Typography>
+                            <MenuItem onClick={handleClose}>
+                                <TbLayoutDashboardFilled className="mr-2"/> Dashboard
+                            </MenuItem>
+                            <Divider />
+                            <MenuItem onClick={logOut}>
+                                <ListItemIcon>
+                                    <Logout fontSize="small" />
+                                </ListItemIcon>
+                                Logout
+                            </MenuItem>
+                        </Menu>
+                    </>
+                }
             </div>
         </div>
     );
