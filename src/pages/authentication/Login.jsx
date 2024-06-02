@@ -9,6 +9,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { IoEyeOffSharp, IoEyeSharp, IoWarningOutline } from "react-icons/io5";
 import { GitHub, Google } from "@mui/icons-material";
 import { AuthContext } from "../../provider/AuthProvider";
+import { createUser } from "../../components/createUser/createUser";
 
 const schema = z.object({
     email: z.string().email(),
@@ -40,7 +41,7 @@ const Login = () => {
             .then(res => {
                 if (res.user)
                     setOpen(true);
-                    navigate(location?.state ? location.state : '/')
+                navigate(location?.state ? location.state : '/')
             })
             .catch((error) => {
                 if (error.message === 'Firebase: Error (auth/invalid-credential).')
@@ -51,8 +52,11 @@ const Login = () => {
     const googleLogin = () => {
         handleGoogleLogin()
             .then(res => {
-                if (res.user)
+                if (res.user) {
+                    const info = { uid: res.user.uid, email: res.user.email, name: res.user.displayName, url: res.user.photoURL };
+                    createUser(info)
                     setOpen(true);
+                }
             })
             .catch((error) => { setError(error.message) });
     }
@@ -60,8 +64,11 @@ const Login = () => {
     const gitHubLogin = () => {
         handleGitHubLogin()
             .then(res => {
-                if (res.user)
+                if (res.user) {
+                    const info = { uid: res.user.uid, email: res.user.email, name: res.user.displayName, url: res.user.photoURL };
+                    createUser(info)
                     setOpen(true);
+                }
             })
             .catch((error) => { setError(error.message) });
     }
@@ -85,8 +92,7 @@ const Login = () => {
                     <p className="text-xl text-center">Focuses on next-generation tech and a central place for tech enthusiasts.</p>
                 </div>
                 <div className="h-full bg-[#FED99B] p-4 md:p-10 xl:col-span-2 rounded-r-md">
-                    <h1 className="text-center font-bold text-3xl md:text-4xl mb-6">NextGenNexus</h1>
-                    <h3 className="text-center font-medium text-xl mb-4 tracking-widest">Welcome to NextGenNexus</h3>
+                    <h3 className="text-center font-medium text-2xl mb-4 tracking-widest">Welcome to NextGenNexus</h3>
                     <form onSubmit={handleSubmit(onSubmit)} className="w-full" noValidate>
                         <Box
                             sx={{
@@ -125,8 +131,8 @@ const Login = () => {
                                     errors.password && (<p className="text-red-500 ml-2">{errors.password.message}</p>)
                                 }
                                 {
-                                error && (<div className="flex justify-center items-center gap-1 text-red-500"><IoWarningOutline /><p className="text-lg">{error}</p></div>)
-                            }
+                                    error && (<div className="flex justify-center items-center gap-1 text-red-500"><IoWarningOutline /><p className="text-lg">{error}</p></div>)
+                                }
                                 <div className="flex justify-end font-medium mt-3">
                                     <Link className="hover:underline">Forget Password</Link>
                                 </div>
@@ -153,9 +159,9 @@ const Login = () => {
                 onClose={handleClose}
                 aria-describedby="alert-dialog-slide-description"
             >
-                <DialogTitle style={{fontSize: 30}}>{"Login Successful"}</DialogTitle>
+                <DialogTitle style={{ fontSize: 30 }}>{"Login Successful"}</DialogTitle>
                 <DialogActions>
-                    <Button onClick={handleClose} variant="outlined" style={{fontSize: 18}}>OK</Button>
+                    <Button onClick={handleClose} variant="outlined" style={{ fontSize: 18 }}>OK</Button>
                 </DialogActions>
             </Dialog>
         </div>
