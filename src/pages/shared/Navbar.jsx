@@ -2,7 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import { HiMenu } from "react-icons/hi";
 import React from "react";
 import { Box, Button, Divider, Drawer, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Menu, MenuItem, Tooltip, Typography } from "@mui/material";
-import { Home, Logout } from "@mui/icons-material";
+import { Logout } from "@mui/icons-material";
 import { SiBmcsoftware } from "react-icons/si";
 import { CustomButton } from "../../components/basic/basicComponents";
 import useAuth from "../../hooks/useAuth";
@@ -135,7 +135,7 @@ const Navbar = () => {
                         >
                             <Typography sx={{ paddingLeft: 2, paddingRight: 5 }}>{user?.displayName}</Typography>
                             <MenuItem onClick={handleClose}>
-                                <TbLayoutDashboardFilled className="mr-2"/> Dashboard
+                                <Link to={'/dashboard'} className="flex items-center gap-2"><TbLayoutDashboardFilled /> Dashboard</Link>
                             </MenuItem>
                             <Divider />
                             <MenuItem onClick={logOut}>
