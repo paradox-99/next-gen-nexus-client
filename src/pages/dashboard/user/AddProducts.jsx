@@ -1,12 +1,14 @@
-import { Box, Button, styled } from "@mui/material";
+import { Box } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { CustomButton, CustomTextField } from "../../../components/basic/basicComponents";
 import useAuth from "../../../hooks/useAuth";
-import { CloudUpload } from "@mui/icons-material";
+import { TagsInput } from "react-tag-input-component";
+import { useState } from "react";
 
 const AddProducts = () => {
 
     const { user } = useAuth();
+    const [selected, setSelected] = useState([]);
     const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm();
 
     const onSubmit = async (data) => {
@@ -18,25 +20,17 @@ const AddProducts = () => {
         const product_image = data.picture;
         const description = data.description;
         const external_links = data.links;
-    }
+        const tags = selected;
 
-    const VisuallyHiddenInput = styled('input')({
-        clip: 'rect(0 0 0 0)',
-        clipPath: 'inset(50%)',
-        height: 1,
-        overflow: 'hidden',
-        position: 'absolute',
-        bottom: 0,
-        left: 0,
-        whiteSpace: 'nowrap',
-        width: 1,
-      });
-      
+        const info = {product_name, product_image, external_links, product_owner_info: {owner_name, owner_email, owner_image}, description, tags}
+
+        console.log(info)
+    }
 
     return (
         <div className="px-20 py-14 w-full flex flex-col justify-center items-center">
             <h1 className="text-4xl font-montserrat font-semibold">Add Products</h1>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onSubmit)} className="w-full">
                 <Box
                     sx={{
                         '& .MuiTextField-root': { m: 1, width: 'full' },
@@ -51,10 +45,9 @@ const AddProducts = () => {
                             type="text"
                             variant="standard"
                             {...register('productName')}
-                            style={{ marginTop: 15 }}
+                            style={{ marginTop: 15, width: '80%' }}
                         />
-                        <input type="file" name="" id="" className=" text-xl"/>
-                        
+                        <input type="file" {...register("picture")} className="text-xl" />
                     </div>
                     <div className="flex flex-col items-end justify-between lg:flex-row gap-6 lg:gap-14">
                         <CustomTextField
@@ -100,6 +93,15 @@ const AddProducts = () => {
                             variant="standard"
                             {...register('links')}
                             style={{ marginTop: 15 }}
+                        />
+                    </div>
+                    <div className="my-5">
+                        <TagsInput
+                            value={selected}
+                            onChange={setSelected}
+                            name="tags"
+                            placeHolder="Enter tags"
+                            classNames={{}}
                         />
                     </div>
                     <div>

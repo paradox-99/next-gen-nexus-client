@@ -9,6 +9,9 @@ export default {
       fontFamily: {
         'montserrat': '"Montserrat", sans-serif',
         'poppins': '"Poppins", sans-serif',
+      },
+      backgroundImage: {
+        'banner': "url('/Modern-Software-Development.jpg')",
       }
     },
     screens:{

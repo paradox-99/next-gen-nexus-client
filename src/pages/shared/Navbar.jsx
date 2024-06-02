@@ -62,7 +62,7 @@ const Navbar = () => {
 
 
     return (
-        <div className="px-5 lg:px-20 w-full py-5 flex justify-between items-center fixed top-0">
+        <div className="px-5 lg:px-20 w-full py-2 md:py-5 flex justify-between items-center fixed top-0">
             <div className="flex">
                 <div className="flex md:hidden font-poppins">
                     <Button onClick={toggleDrawer(true)} style={{ fontSize: 24, color: "gray", paddingLeft: 0, minWidth: 24 }}><HiMenu /></Button>

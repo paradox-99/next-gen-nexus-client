@@ -101,9 +101,8 @@ const Register = () => {
         navigate('/signin')
     };
 
-
     return (
-        <div className="w-full flex justify-center items-center mt-64 md:mt-32 xl:mt-10">
+        <div className="w-full flex justify-center items-center mt-5 md:mt-32 xl:mt-10">
             <div className="xl:px-28 py-14 grid grid-cols-1 md:grid-cols-2">
                 <div className="bg-[#D6EFFF] h-full rounded-l-md p-4 md:p-10 flex flex-col justify-center items-center pr-5">
                     <img src={img} alt="" className="w-4/5" />
