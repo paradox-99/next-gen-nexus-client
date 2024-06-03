@@ -62,7 +62,7 @@ const Navbar = () => {
 
 
     return (
-        <div className="px-5 lg:px-20 w-full z-10 py-2 md:py-5 flex justify-between items-center fixed top-0">
+        <div className="px-5 lg:px-20 w-full z-10 bg-[#15151580] py-2 flex justify-between items-center fixed top-0">
             <div className="flex">
                 <div className="flex md:hidden font-poppins">
                     <Button onClick={toggleDrawer(true)} style={{ fontSize: 24, color: "gray", paddingLeft: 0, minWidth: 24 }}><HiMenu /></Button>
@@ -70,11 +70,11 @@ const Navbar = () => {
                         {DrawerList}
                     </Drawer>
                 </div>
-                <Link to={'/'} className="font-montserrat font-bold text-3xl md:flex hidden tracking-widest">NextGenNexus</Link>
+                <Link to={'/'} className="font-montserrat font-bold text-3xl md:flex hidden tracking-widest text-white">NextGenNexus</Link>
             </div>
             <div className="flex">
-                <Link to={'/'} className="font-montserrat font-bold text-2xl smm:text-xl lg:text-3xl flex md:hidden">NextGenNexus</Link>
-                <ul className="md:flex hidden gap-10 font-poppins text-xl">
+                <Link to={'/'} className="font-montserrat font-bold text-2xl smm:text-xl lg:text-3xl flex md:hidden text-white">NextGenNexus</Link>
+                <ul className="md:flex hidden gap-10 font-poppins text-xl text-white">
                     <li><NavLink to={'/'} className="flex gap-1 items-center"><FaHome />Home</NavLink></li>
                     <li><NavLink to={'/products'} className="flex items-center gap-1" items-center><SiBmcsoftware />Products</NavLink></li>
                 </ul>
