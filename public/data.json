@@ -16,7 +16,12 @@
         "external_links": [
             "https://techgadget.com",
             "https://github.com/techgadget"
-        ]
+        ],
+        "upvote_count": 120,
+        "downvote_count": 5,
+        "creation_time": {
+            "$date": "2023-05-15T09:00:00Z"
+        }
     },
     {
         "product_name": "AIWriter",
@@ -35,7 +40,12 @@
         "external_links": [
             "https://aiwriter.com",
             "https://github.com/aiwriter"
-        ]
+        ],
+        "upvote_count": 200,
+        "downvote_count": 10,
+        "creation_time": {
+            "$date": "2023-04-10T14:30:00Z"
+        }
     },
     {
         "product_name": "GameMaster",
@@ -54,7 +64,12 @@
         "external_links": [
             "https://gamemaster.com",
             "https://github.com/gamemaster"
-        ]
+        ],
+        "upvote_count": 350,
+        "downvote_count": 15,
+        "creation_time": {
+            "$date": "2023-03-20T11:45:00Z"
+        }
     },
     {
         "product_name": "HealthTracker",
@@ -73,7 +88,12 @@
         "external_links": [
             "https://healthtracker.com",
             "https://github.com/healthtracker"
-        ]
+        ],
+        "upvote_count": 180,
+        "downvote_count": 8,
+        "creation_time": {
+            "$date": "2023-02-25T08:15:00Z"
+        }
     },
     {
         "product_name": "EduLearn",
@@ -92,14 +112,19 @@
         "external_links": [
             "https://edulearn.com",
             "https://github.com/edulearn"
-        ]
+        ],
+        "upvote_count": 250,
+        "downvote_count": 12,
+        "creation_time": {
+            "$date": "2023-01-30T13:20:00Z"
+        }
     },
     {
         "product_name": "FinanceGuru",
         "product_image": "https://i.ibb.co/4SnDfX3/3481.jpg",
         "description": "FinanceGuru provides tools for managing personal finances. The platform offers budgeting tools, expense tracking, and investment management features to help you achieve your financial goals. With FinanceGuru, you can create custom budgets, monitor your spending, and receive personalized financial advice. The app also includes features for tracking your credit score, planning for retirement, and managing debt. Whether you're looking to save money, invest wisely, or achieve financial independence, FinanceGuru has the tools and resources you need.",
         "product_owner_info": {
-            "owner_name": "David williamson",
+            "owner_name": "David Williamson",
             "owner_image": "https://ibb.co/4FF340j",
             "owner_email": "davidwilliamson@example.com"
         },
@@ -111,7 +136,12 @@
         "external_links": [
             "https://financeguru.com",
             "https://github.com/financeguru"
-        ]
+        ],
+        "upvote_count": 220,
+        "downvote_count": 9,
+        "creation_time": {
+            "$date": "2023-04-05T10:05:00Z"
+        }
     },
     {
         "product_name": "TravelBuddy",
@@ -130,7 +160,12 @@
         "external_links": [
             "https://travelbuddy.com",
             "https://github.com/travelbuddy"
-        ]
+        ],
+        "upvote_count": 300,
+        "downvote_count": 7,
+        "creation_time": {
+            "$date": "2023-03-10T07:50:00Z"
+        }
     },
     {
         "product_name": "EcoShop",
@@ -149,7 +184,12 @@
         "external_links": [
             "https://ecoshop.com",
             "https://github.com/ecoshop"
-        ]
+        ],
+        "upvote_count": 210,
+        "downvote_count": 4,
+        "creation_time": {
+            "$date": "2023-06-01T08:20:00Z"
+        }
     },
     {
         "product_name": "Artify",
@@ -168,7 +208,12 @@
         "external_links": [
             "https://artify.com",
             "https://github.com/artify"
-        ]
+        ],
+        "upvote_count": 175,
+        "downvote_count": 5,
+        "creation_time": {
+            "$date": "2023-06-02T10:45:00Z"
+        }
     },
     {
         "product_name": "CodeHelper",
@@ -187,7 +232,12 @@
         "external_links": [
             "https://codehelper.com",
             "https://github.com/codehelper"
-        ]
+        ],
+        "upvote_count": 230,
+        "downvote_count": 3,
+        "creation_time": {
+            "$date": "2023-06-03T13:00:00Z"
+        }
     },
     {
         "product_name": "MarketInsight",
@@ -206,7 +256,12 @@
         "external_links": [
             "https://marketinsight.com",
             "https://github.com/marketinsight"
-        ]
+        ],
+        "upvote_count": 260,
+        "downvote_count": 2,
+        "creation_time": {
+            "$date": "2023-06-04T09:15:00Z"
+        }
     },
     {
         "product_name": "MusicStream",
@@ -225,7 +280,12 @@
         "external_links": [
             "https://musicstream.com",
             "https://github.com/musicstream"
-        ]
+        ],
+        "upvote_count": 190,
+        "downvote_count": 4,
+        "creation_time": {
+            "$date": "2023-06-05T11:30:00Z"
+        }
     },
     {
         "product_name": "PhotoEditPro",
@@ -244,7 +304,12 @@
         "external_links": [
             "https://photoeditpro.com",
             "https://github.com/photoeditpro"
-        ]
+        ],
+        "upvote_count": 220,
+        "downvote_count": 5,
+        "creation_time": {
+            "$date": "2023-06-06T12:45:00Z"
+        }
     },
     {
         "product_name": "HomeChef",
@@ -263,7 +328,12 @@
         "external_links": [
             "https://homechef.com",
             "https://github.com/homechef"
-        ]
+        ],
+        "upvote_count": 205,
+        "downvote_count": 3,
+        "creation_time": {
+            "$date": "2023-06-07T14:00:00Z"
+        }
     },
     {
         "product_name": "FitLife",
@@ -282,7 +352,12 @@
         "external_links": [
             "https://fitlife.com",
             "https://github.com/fitlife"
-        ]
+        ],
+        "upvote_count": 185,
+        "downvote_count": 6,
+        "creation_time": {
+            "$date": "2023-06-08T08:45:00Z"
+        }
     },
     {
         "product_name": "ShopSmart",
@@ -301,7 +376,12 @@
         "external_links": [
             "https://shopsmart.com",
             "https://github.com/shopsmart"
-        ]
+        ],
+        "upvote_count": 225,
+        "downvote_count": 4,
+        "creation_time": {
+            "$date": "2023-06-09T10:20:00Z"
+        }
     },
     {
         "product_name": "GreenHome",
@@ -320,7 +400,12 @@
         "external_links": [
             "https://greenhome.com",
             "https://github.com/greenhome"
-        ]
+        ],
+        "upvote_count": 240,
+        "downvote_count": 2,
+        "creation_time": {
+            "$date": "2023-06-10T12:35:00Z"
+        }
     },
     {
         "product_name": "MindfulMeditate",
@@ -339,7 +424,12 @@
         "external_links": [
             "https://mindfulmeditate.com",
             "https://github.com/mindfulmeditate"
-        ]
+        ],
+        "upvote_count": 210,
+        "downvote_count": 3,
+        "creation_time": {
+            "$date": "2023-06-11T09:10:00Z"
+        }
     },
     {
         "product_name": "BookClub",
@@ -358,6 +448,11 @@
         "external_links": [
             "https://bookclub.com",
             "https://github.com/bookclub"
-        ]
+        ],
+        "upvote_count": 200,
+        "downvote_count": 5,
+        "creation_time": {
+            "$date": "2023-06-12T11:55:00Z"
+        }
     }
 ]

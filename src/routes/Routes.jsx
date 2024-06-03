@@ -13,6 +13,8 @@ import ReportedContents from "../pages/dashboard/moderator/ReportedContents";
 import DashboardAdmin from "../pages/dashboard/admin/DashboardAdmin";
 import ManageUsers from "../pages/dashboard/admin/ManageUsers";
 import ManageCoupon from "../pages/dashboard/admin/ManageCoupon";
+import { Details } from "@mui/icons-material";
+import axios from "axios";
 
 
 const router = createBrowserRouter([
@@ -35,6 +37,11 @@ const router = createBrowserRouter([
             {
                 path: '/signup',
                 element: <Register></Register>
+            },
+            {
+                path: '/viewDetails/:id',
+                loader: ({params}) => axios.get('')
+                element: <Details></Details>
             }
         ]
     },

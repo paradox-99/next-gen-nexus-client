@@ -205,7 +205,7 @@ const Register = () => {
                 onClose={handleClose}
                 aria-describedby="alert-dialog-slide-description"
             >
-                <DialogTitle style={{ fontSize: 30 }}>{"Login Successful"}</DialogTitle>
+                <DialogTitle style={{ fontSize: 30 }}>{"Registration Successful"}</DialogTitle>
                 <DialogActions>
                     <Button onClick={handleClose} variant="outlined" style={{ fontSize: 18 }}>OK</Button>
                 </DialogActions>

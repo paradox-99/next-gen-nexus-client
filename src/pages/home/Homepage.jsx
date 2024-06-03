@@ -4,8 +4,24 @@ import 'swiper/css/effect-cards';
 import { EffectCards } from 'swiper/modules';
 import { Link } from 'react-router-dom';
 import { Button } from '@mui/material';
+import useAxiosPublic from '../../hooks/useAxiosPublic'
+import { useQuery } from '@tanstack/react-query';
+import FeaturedCart from '../../components/cart/FeaturedCart';
+import useAuth from '../../hooks/useAuth';
 
 const Homepage = () => {
+
+    const axiosPublic = useAxiosPublic();
+    const { user } = useAuth();
+
+    const { refetch, data: products } = useQuery({
+        queryKey: ['featuredProducts'],
+        queryFn: async () => {
+            const res = await axiosPublic.get('/products?status=featured');
+            return res.data;
+        }
+    })
+
     return (
         <div className="">
             {/* banner */}
@@ -25,10 +41,10 @@ const Homepage = () => {
                                         style={{
                                             background: '#D6EFFF',
                                             color: 'black',
-                                            '@media (max-width: 600px)': {
+                                            '@media (maxWidth: 600px)': {
                                                 fontSize: 20,
                                             },
-                                            '@media (max-width: 350px)': {
+                                            '@media (maxWidth: 350px)': {
                                                 fontSize: 16,
                                             },
                                         }}> Explore</Button>
@@ -41,10 +57,10 @@ const Homepage = () => {
                                         style={{
                                             background: '#D6EFFF',
                                             color: 'black',
-                                            '@media (max-width: 600px)': {
+                                            '@media (maxWidth: 600px)': {
                                                 fontSize: 20,
                                             },
-                                            '@media (max-width: 350px)': {
+                                            '@media (maxWidth: 350px)': {
                                                 fontSize: 16,
                                             },
                                         }}> Upvote</Button>
@@ -57,10 +73,10 @@ const Homepage = () => {
                                         style={{
                                             background: '#D6EFFF',
                                             color: 'black',
-                                            '@media (max-width: 600px)': {
+                                            '@media (maxWidth: 600px)': {
                                                 fontSize: 20,
                                             },
-                                            '@media (max-width: 350px)': {
+                                            '@media (maxWidth: 350px)': {
                                                 fontSize: 16,
                                             },
                                         }}> Review</Button>
@@ -72,9 +88,20 @@ const Homepage = () => {
                 </div>
                 <Link to={'/signin'} className='bg-[#FE654F] p-3 md:p-4 lg:p-5 w-36 text-center mt-10 font-montserrat text-xl font-semibold hover:border-b-4 hover:bg-[#FED99B] rounded-t-md hover:border-black'>Join Now</Link>
             </div>
-
-
-            <div className="mt-10">
+            <div className="mt-24 max-w-7xl lg:mx-auto mx-5 md:mx-7">
+                <h1 className='text-5xl text-center font-bold mb-5'>Featured Products</h1>
+                <div className='mt-16 grid grid-cols-1 lg:grid-cols-2 gap-8'>
+                    {
+                        products?.featuredProducts?.map((product) => <FeaturedCart
+                            key={product._id}
+                            product={product}
+                            userEmail = {user?.email}
+                            refetch={refetch}
+                        ></FeaturedCart>
+                        )}
+                </div>
+            </div>
+            <div className="mt-24 max-w-7xl lg:mx-auto mx-5 md:mx-7">
 
             </div>
         </div>
