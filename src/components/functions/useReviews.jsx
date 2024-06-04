@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 
 const useReviews = ({product_id}) => {
 
-    // console.log(product_id);
     const axiosPublic = useAxiosPublic();
 
     const { data } = useQuery({

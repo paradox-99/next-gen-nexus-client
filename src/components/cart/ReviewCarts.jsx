@@ -4,7 +4,6 @@ import ReviewCart from "./ReviewCart";
 
 const ReviewCarts = ({ product_id }) => {
 
-    // console.log(product_id);
     const reviews = useReviews({ product_id });
 
     return (

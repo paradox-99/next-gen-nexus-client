@@ -1,4 +1,4 @@
-import { Chip, IconButton } from '@mui/material';
+import { Chip, IconButton} from '@mui/material';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { SlDislike, SlLike } from "react-icons/sl";
@@ -15,18 +15,20 @@ const FeaturedCart = ({ product, userEmail, refetch }) => {
         }
     }, [])
 
+    
+
     return (
         <div className='bg-[#D6EFFF] rounded-lg'>
-            <div className='p-4 flex gap-5'>
+            <div className='p-4 flex flex-col md:flex-row gap-5'>
                 <div>
                     <figure>
-                        <img src={product.product_image} alt={product.product_name} className='w-48' />
+                        <img src={product.product_image} alt={product.product_name} className=' md:w-48 md:h-32' />
                     </figure>
                 </div>
                 <div>
                     <Link to={`/viewDetails/${product._id}`} className='text-2xl font-semibold'>{product.product_name}</Link>
-                    <div className='flex gap-1 items-center mt-2'>
-                        <p className='font-poppins text-lg'>Tags: </p>
+                    <div className='flex flex-wrap gap-1 items-center mt-2'>
+                        <p className='font-poppins'>Tags: </p>
                         {
                             product.tags.map((tag, idx) => <Chip key={idx} label={tag} variant="outlined" style={{ background: '#FED99B' }} />)
                         }
@@ -41,7 +43,9 @@ const FeaturedCart = ({ product, userEmail, refetch }) => {
                         <p className='p-2 bg-[#FED99B] rounded-lg font-poppins'>{product.upvote_count}</p>
                     </div>
                 </div>
+                
             </div>
+            
         </div>
     );
 };

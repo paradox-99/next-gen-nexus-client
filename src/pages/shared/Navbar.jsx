@@ -76,7 +76,7 @@ const Navbar = () => {
                 <Link to={'/'} className="font-montserrat font-bold text-2xl smm:text-xl lg:text-3xl flex md:hidden text-white">NextGenNexus</Link>
                 <ul className="md:flex hidden gap-10 font-poppins text-xl text-white">
                     <li><NavLink to={'/'} className="flex gap-1 items-center"><FaHome />Home</NavLink></li>
-                    <li><NavLink to={'/products'} className="flex items-center gap-1" items-center><SiBmcsoftware />Products</NavLink></li>
+                    <li><NavLink to={'/products'} className="flex items-center gap-1"><SiBmcsoftware />Products</NavLink></li>
                 </ul>
             </div>
             <div>

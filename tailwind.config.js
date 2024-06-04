@@ -16,6 +16,7 @@ export default {
     },
     screens:{
       'smm': {'max': '350px'},
+      'smx': {'max': '500px'},
       'sm': '640px',
       // => @media (min-width: 640px) { ... }
 
