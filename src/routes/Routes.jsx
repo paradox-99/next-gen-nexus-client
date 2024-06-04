@@ -13,7 +13,6 @@ import ReportedContents from "../pages/dashboard/moderator/ReportedContents";
 import DashboardAdmin from "../pages/dashboard/admin/DashboardAdmin";
 import ManageUsers from "../pages/dashboard/admin/ManageUsers";
 import ManageCoupon from "../pages/dashboard/admin/ManageCoupon";
-import axios from "axios";
 import Details from "../pages/viewDetails/Details";
 
 
@@ -40,7 +39,6 @@ const router = createBrowserRouter([
             },
             {
                 path: '/viewDetails/:id',
-                loader: ({params}) => axios.get(`http://localhost:3000/products/${params.id}`),
                 element: <Details></Details>
             }
         ]

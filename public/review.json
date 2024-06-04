@@ -1,0 +1,102 @@
+[
+    {
+        "product_id": "665d46bedaea2a8f71e4b99f",
+        "reviewer_name": "Alice Johnson",
+        "reviewer_image": "https://i.ibb.co/1KqjzhX/alice.jpg",
+        "description": "This product has been a game changer for me. The features are intuitive and the performance is top-notch.",
+        "rating": 5,
+        "date": {
+            "$date": "2023-05-01T00:00:00.000Z"
+        }
+    },
+    {
+        "product_id": "665d46bedaea2a8f71e4b993",
+        "reviewer_name": "Bob Smith",
+        "reviewer_image": "https://i.ibb.co/1KqjzhX/bob.jpg",
+        "description": "Overall, a solid product with a few minor bugs. The customer support was very helpful.",
+        "rating": 4,
+        "date": {
+            "$date": "2023-05-02T00:00:00.000Z"
+        }
+    },
+    {
+        "product_id": "665d46bedaea2a8f71e4b99f",
+        "reviewer_name": "Charlie Brown",
+        "reviewer_image": "https://i.ibb.co/1KqjzhX/charlie.jpg",
+        "description": "The product did not meet my expectations. It lacked several key features I was looking for.",
+        "rating": 2,
+        "date": {
+            "$date": "2023-05-03T00:00:00.000Z"
+        }
+    },
+    {
+        "product_id": "665d46bedaea2a8f71e4b995",
+        "reviewer_name": "Diana Prince",
+        "reviewer_image": "https://i.ibb.co/1KqjzhX/diana.jpg",
+        "description": "An excellent product with a sleek design and easy-to-use interface. Highly recommend!",
+        "rating": 5,
+        "date": {
+            "$date": "2023-05-04T00:00:00.000Z"
+        }
+    },
+    {
+        "product_id": "665d46bedaea2a8f71e4b993",
+        "reviewer_name": "Ethan Hunt",
+        "reviewer_image": "https://i.ibb.co/1KqjzhX/ethan.jpg",
+        "description": "Good value for the money. It performs well for most tasks but can be slow with more demanding applications.",
+        "rating": 3,
+        "date": {
+            "$date": "2023-05-05T00:00:00.000Z"
+        }
+    },
+    {
+        "product_id": "665d46bedaea2a8f71e4b995",
+        "reviewer_name": "Fiona Gallagher",
+        "reviewer_image": "https://i.ibb.co/1KqjzhX/fiona.jpg",
+        "description": "I love this product! It has exceeded my expectations in every way.",
+        "rating": 5,
+        "date": {
+            "$date": "2023-05-06T00:00:00.000Z"
+        }
+    },
+    {
+        "product_id": "665d46bedaea2a8f71e4b9a1",
+        "reviewer_name": "George Harrison",
+        "reviewer_image": "https://i.ibb.co/1KqjzhX/george.jpg",
+        "description": "The product is decent but not exceptional. It gets the job done but could be improved.",
+        "rating": 3,
+        "date": {
+            "$date": "2023-05-07T00:00:00.000Z"
+        }
+    },
+    {
+        "product_id": "665d46bedaea2a8f71e4b990",
+        "reviewer_name": "Hannah Montana",
+        "reviewer_image": "https://i.ibb.co/1KqjzhX/hannah.jpg",
+        "description": "Fantastic product! I've recommended it to all my friends.",
+        "rating": 5,
+        "date": {
+            "$date": "2023-05-08T00:00:00.000Z"
+        }
+    },
+    {
+        "product_id": "665d46bedaea2a8f71e4b990",
+        "reviewer_name": "Ian Fleming",
+        "reviewer_image": "https://i.ibb.co/1KqjzhX/ian.jpg",
+        "description": "Not worth the money. It broke down after a week of use.",
+        "rating": 1,
+        "date": {
+            "$date": "2023-05-09T00:00:00.000Z"
+        }
+    },
+    {
+        "product_id": "665d46bedaea2a8f71e4b993",
+        "reviewer_name": "Jill Valentine",
+        "reviewer_image": "https://i.ibb.co/1KqjzhX/jill.jpg",
+        "description": "A good product with room for improvement. The user interface could be more intuitive.",
+        "rating": 4,
+        "date": {
+            "$date": "2023-05-10T00:00:00.000Z"
+        }
+    }
+]
