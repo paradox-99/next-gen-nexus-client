@@ -11,6 +11,7 @@ import ReviewCarts from "../../components/cart/ReviewCarts";
 import { CustomButton, CustomTextField } from "../../components/basic/basicComponents";
 import { Star } from "@mui/icons-material";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const Details = () => {
 
@@ -55,8 +56,14 @@ const Details = () => {
             })
     }
 
+
     return (
         <div className="mt-24 max-w-7xl lg:mx-auto mx-5 md:mx-7">
+            {
+                data && <Helmet>
+                    <title>Details || {data?.product_name}</title>
+                </Helmet>
+            }
             <div>
                 <h1 className="text-3xl md:text-4xl lg:text-5xl text-center font-bold">Product Details</h1>
                 <div className="mt-10 flex gap-5 flex-col lg:flex-row mb-10">

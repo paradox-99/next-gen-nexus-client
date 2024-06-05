@@ -8,6 +8,8 @@ import useAxiosPublic from '../../hooks/useAxiosPublic'
 import { useQuery } from '@tanstack/react-query';
 import FeaturedCart from '../../components/cart/FeaturedCart';
 import useAuth from '../../hooks/useAuth';
+import Carts from '../../components/cart/Carts';
+import { CustomButton } from '../../components/basic/basicComponents';
 
 const Homepage = () => {
 
@@ -88,21 +90,34 @@ const Homepage = () => {
                 </div>
                 <Link to={'/signin'} className='bg-[#FE654F] p-3 md:p-4 lg:p-5 w-36 text-center mt-10 font-montserrat text-xl font-semibold hover:border-b-4 hover:bg-[#FED99B] rounded-t-md hover:border-black'>Join Now</Link>
             </div>
-            <div className="mt-24 max-w-7xl lg:mx-auto mx-5 md:mx-7">
+            <div className="mt-24 max-w-7xl lg:mx-auto md:mx-7">
                 <h1 className='text-5xl text-center font-bold mb-5'>Featured Products</h1>
                 <div className='mt-16 grid grid-cols-1 lg:grid-cols-2 gap-8'>
                     {
                         products?.featuredProducts?.map((product) => <FeaturedCart
                             key={product._id}
                             product={product}
-                            userEmail = {user?.email}
+                            userEmail={user?.email}
                             refetch={refetch}
                         ></FeaturedCart>
                         )}
                 </div>
             </div>
-            <div className="mt-24 max-w-7xl lg:mx-auto mx-5 md:mx-7">
-
+            <div className="mt-24 max-w-7xl lg:mx-auto md:mx-7">
+                <h1 className='text-5xl text-center font-bold mb-5'>Trending Products</h1>
+                <div className='mt-16 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5'>
+                    {
+                        products?.trendingProducts?.map((product) => <Carts
+                            key={product._id}
+                            product={product}
+                            userEmail={user?.email}
+                            refetch={refetch}
+                        ></Carts>
+                        )}
+                </div>
+                <div className='my-10 text-center'>
+                    <CustomButton href='/products'>Show all Products</CustomButton>
+                </div>
             </div>
         </div>
     );

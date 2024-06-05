@@ -26,11 +26,11 @@ const FeaturedCart = ({ product, userEmail, refetch }) => {
                     </figure>
                 </div>
                 <div>
-                    <Link to={`/viewDetails/${product._id}`} className='text-2xl font-semibold'>{product.product_name}</Link>
+                    <Link to={`/viewDetails/${product._id}`} className='text-2xl font-semibold hover:underline'>{product.product_name}</Link>
                     <div className='flex flex-wrap gap-1 items-center mt-2'>
                         <p className='font-poppins'>Tags: </p>
                         {
-                            product.tags.map((tag, idx) => <Chip key={idx} label={tag} variant="outlined" style={{ background: '#FED99B' }} />)
+                            product.tags.map((tag, idx) => <Chip key={idx} label={tag} variant="outlined" style={{ background: 'white' }} />)
                         }
                     </div>
                     <div className='flex gap-1 items-center mt-5'>
@@ -40,7 +40,7 @@ const FeaturedCart = ({ product, userEmail, refetch }) => {
                         <IconButton id='upvote' onClick={() => decreaseUpvote(userEmail, product.upvote_count, product._id, refetch)} disabled={isDisable}>
                             <SlDislike className='text-[#FE654F]' id='upvoteIcon' />
                         </IconButton>
-                        <p className='p-2 bg-[#FED99B] rounded-lg font-poppins'>{product.upvote_count}</p>
+                        <p className='p-2 bg-white rounded-full font-poppins'>{product.upvote_count}</p>
                     </div>
                 </div>
                 

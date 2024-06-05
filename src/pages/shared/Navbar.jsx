@@ -15,7 +15,6 @@ const Navbar = () => {
     const [open, setOpen] = React.useState(false);
     const [anchorEl, setAnchorEl] = React.useState(null);
     const Open = Boolean(anchorEl);
-
     const toggleDrawer = (newOpen) => () => {
         setOpen(newOpen);
     };
@@ -62,10 +61,10 @@ const Navbar = () => {
 
 
     return (
-        <div className="px-5 lg:px-20 w-full z-10 bg-[#15151580] py-2 flex justify-between items-center fixed top-0">
+        <div className="px-2 lg:px-20 w-full z-10 bg-[#15151580] py-2 flex justify-between items-center fixed top-0">
             <div className="flex">
                 <div className="flex md:hidden font-poppins">
-                    <Button onClick={toggleDrawer(true)} style={{ fontSize: 24, color: "gray", paddingLeft: 0, minWidth: 24 }}><HiMenu /></Button>
+                    <Button onClick={toggleDrawer(true)} style={{ fontSize: 24, color: "white", paddingLeft: 0, paddingRight: 0, minWidth: 24 }}><HiMenu /></Button>
                     <Drawer open={open} onClose={toggleDrawer(false)}>
                         {DrawerList}
                     </Drawer>
@@ -79,7 +78,8 @@ const Navbar = () => {
                     <li><NavLink to={'/products'} className="flex items-center gap-1"><SiBmcsoftware />Products</NavLink></li>
                 </ul>
             </div>
-            <div>
+            <div className="flex gap-4">
+
                 {
                     !user && <Link to={'/signin'}><CustomButton>Sign in</CustomButton></Link>
                 }
@@ -89,7 +89,7 @@ const Navbar = () => {
                             <IconButton
                                 onClick={handleClick}
                                 size="small"
-                                sx={{ ml: 2 }}
+                                sx={{ ml: 0 }}
                                 aria-controls={Open ? 'account-menu' : undefined}
                                 aria-haspopup="true"
                                 aria-expanded={Open ? 'true' : undefined}
@@ -133,7 +133,7 @@ const Navbar = () => {
                             transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                             anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                         >
-                            <Typography sx={{ paddingLeft: 2, paddingRight: 5 }}>{user?.displayName}</Typography>
+                            <Typography sx={{ paddingLeft: 2, paddingRight: 5, fontSize: 20, fontWeight: 600 }}>{user?.displayName}</Typography>
                             <MenuItem onClick={handleClose}>
                                 <Link to={'/dashboard'} className="flex items-center gap-2"><TbLayoutDashboardFilled /> Dashboard</Link>
                             </MenuItem>
