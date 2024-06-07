@@ -5,6 +5,9 @@ import { FaHome } from "react-icons/fa";
 import { SiBmcsoftware } from "react-icons/si";
 import { Outlet } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import { FaUsersGear } from "react-icons/fa6";
+import { BiSolidCoupon } from "react-icons/bi";
+import { TbLayoutDashboardFilled } from "react-icons/tb";
 
 const montserratFont = createTheme({
     typography: {
@@ -70,6 +73,30 @@ const Dashboard = () => {
                                             <ReportOutlined />
                                         </ListItemIcon>
                                         <ListItemText primary="Reported Products" />
+                                    </ListItemButton>
+                                </ListItem>
+                                <ListItem disablePadding>
+                                    <ListItemButton href="/dashboard/adminDashboard">
+                                        <ListItemIcon style={{ fontSize: 25 }}>
+                                            <TbLayoutDashboardFilled />
+                                        </ListItemIcon>
+                                        <ListItemText primary="Dashboard" />
+                                    </ListItemButton>
+                                </ListItem>
+                                <ListItem disablePadding>
+                                    <ListItemButton href="/dashboard/manageUsers">
+                                        <ListItemIcon style={{ fontSize: 25 }}>
+                                            <FaUsersGear />
+                                        </ListItemIcon>
+                                        <ListItemText primary="Manage Users" />
+                                    </ListItemButton>
+                                </ListItem>
+                                <ListItem disablePadding>
+                                    <ListItemButton href="/dashboard/manageCoupons">
+                                        <ListItemIcon style={{ fontSize: 25 }}>
+                                            <BiSolidCoupon />
+                                        </ListItemIcon>
+                                        <ListItemText primary="Manage Coupons" />
                                     </ListItemButton>
                                 </ListItem>
                             </List>

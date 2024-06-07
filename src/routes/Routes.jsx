@@ -81,7 +81,7 @@ const router = createBrowserRouter([
                 element: <ManageUsers></ManageUsers>
             },
             {
-                path: '/dashboard/manageCoupon',
+                path: '/dashboard/manageCoupons',
                 element: <ManageCoupon></ManageCoupon>
             }
         ]

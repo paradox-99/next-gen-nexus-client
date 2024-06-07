@@ -42,8 +42,8 @@ const ReportedContents = () => {
         }
     })
 
-    const deleteProduct = async (id, email) => {
-        await axiosPublic.delete(`/deleteProducts/product?id=${id}&email=${email}`)
+    const deleteProduct = async (id) => {
+        await axiosPublic.delete(`/deleteProducts/product?id=${id}`)
             .then(res => {
                 if (res.data.deletedCount > 0) {
                     toast.success("Deleted successfully.")
@@ -53,7 +53,7 @@ const ReportedContents = () => {
     }
 
     return (
-        <div className="flex flex-col w-full justify-center items-center px-20 mt-16">
+        <div className="flex flex-col w-full justify-center items-center px-60 mt-16">
             <Title title={"Reported Products"}></Title>
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -62,7 +62,7 @@ const ReportedContents = () => {
                             <TableRow style={{ fontWeight: 600 }}>
                                 <TableCell>Product name</TableCell>
                                 <TableCell align="left"></TableCell>
-                                <TableCell align="left"></TableCell>
+                                <TableCell align="right"></TableCell>
                             </TableRow>
                         </TableHead>
                     </ThemeProvider>
@@ -82,8 +82,8 @@ const ReportedContents = () => {
                                             Details
                                         </Link>
                                     </TableCell>
-                                    <TableCell align="right">
-                                        <button className="flex items-center gap-1 text-red-600 outline outline-1 px-2 py-1 rounded">
+                                    <TableCell align="left">
+                                        <button onClick={() => deleteProduct(product._id)} className="flex items-center gap-1 text-red-600 outline outline-1 px-2 py-1 rounded">
                                             <MdDelete />
                                             Delete
                                         </button>
