@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 let valid = false;
 
 export const increaseUpvote = async (userEmail, vote, id, refetch) => {
+    console.log(userEmail);
     if (!userEmail) {
         toast.error("Please login first", {
             position: "top-center",

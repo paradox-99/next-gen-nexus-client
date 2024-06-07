@@ -1,0 +1,15 @@
+/* Example custom styles */
+.rti--container {
+    --rti-border: #ccc !important;
+    --rti-main: white !important;
+    --rti-radius: 0rem !important;
+    border: white !important;
+    padding: 0 !important;
+    font-size: 20px;
+    border-bottom: 1px solid black !important;
+    padding-bottom: 4px !important;
+}
+
+.rti--input {
+    width: 100% !important;
+}

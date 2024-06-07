@@ -14,7 +14,7 @@ import DashboardAdmin from "../pages/dashboard/admin/DashboardAdmin";
 import ManageUsers from "../pages/dashboard/admin/ManageUsers";
 import ManageCoupon from "../pages/dashboard/admin/ManageCoupon";
 import Details from "../pages/viewDetails/Details";
-
+import PrivateRoute from "../private/PrivateRoute"
 
 const router = createBrowserRouter([
     {
@@ -45,7 +45,7 @@ const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <Dashboard></Dashboard>,
+        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
         children: [
             // user routes
             {

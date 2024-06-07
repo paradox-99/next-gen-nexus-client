@@ -4,9 +4,11 @@ import { FiSearch } from "react-icons/fi";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import Carts from "../../components/cart/Carts";
 import { Helmet } from "react-helmet-async";
+import useAuth from "../../hooks/useAuth";
 
 const Products = () => {
 
+    const { user } = useAuth();
     const [count, setCount] = useState(0);
     const [itemPerPage, setItemPerPage] = useState(6);
     const [currentPage, setCurrentPage] = useState(0);
@@ -82,6 +84,7 @@ const Products = () => {
                     products.map(product => <Carts
                         key={product._id}
                         product={product}
+                        userEmail={user?.email}
                     ></Carts>)
                 }
             </div>
