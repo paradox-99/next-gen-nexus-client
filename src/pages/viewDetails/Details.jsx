@@ -30,8 +30,10 @@ const Details = () => {
         }
     })
 
+    console.log(data);
+
     useEffect(() => {
-        if (user?.email === data?.product_owner_info.owner_email) {
+        if (user?.email === data?.product_owner_info?.owner_email) {
             setDisable(true);
         }
     }, [])
@@ -59,11 +61,10 @@ const Details = () => {
 
     return (
         <div className="mt-24 max-w-7xl lg:mx-auto mx-5 md:mx-7">
-            {
-                data && <Helmet>
-                    <title>Details || {data?.product_name}</title>
-                </Helmet>
-            }
+            <Helmet>
+                <title>Product Details</title>
+            </Helmet>
+
             <div>
                 <h1 className="text-3xl md:text-4xl lg:text-5xl text-center font-bold">Product Details</h1>
                 <div className="mt-10 flex gap-5 flex-col lg:flex-row mb-10">
@@ -102,7 +103,7 @@ const Details = () => {
                             <div className='flex flex-wrap gap-1 items-center mt-5'>
                                 <p className='font-poppins text-lg'>Tags: </p>
                                 {
-                                    data?.tags.map((tag, idx) => <Chip key={idx} label={tag} variant="outlined" style={{ background: '#FED99B' }} />)
+                                    data?.tags?.map((tag, idx) => <Chip key={idx} label={tag} variant="outlined" style={{ background: '#FED99B' }} />)
                                 }
                             </div>
                             <div className="bg-[#D6EFFF] p-5 mt-6 rounded-lg font-poppins text-justify">

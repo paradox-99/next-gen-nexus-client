@@ -4,6 +4,7 @@ import useAuth from "../../../hooks/useAuth";
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, ThemeProvider, createTheme } from "@mui/material";
 import { MdOutlineUpdate, MdDelete } from "react-icons/md";
 import toast from "react-hot-toast";
+import Title from "../../shared/Title";
 
 const montserratFont = createTheme({
     typography: {
@@ -34,7 +35,7 @@ const MyProducts = () => {
     const { refetch, data } = useQuery({
         queryKey: ['products'],
         queryFn: async () => {
-            const response = await axiosPublic.get(`/products/${user?.email}`)
+            const response = await axiosPublic.get(`/userProducts/${user?.email}`)
             return response.data;
         }
     })
@@ -50,7 +51,8 @@ const MyProducts = () => {
     }
 
     return (
-        <div className="flex w-full min-h-screen justify-center items-center px-20">
+        <div className="flex flex-col w-full items-center px-20 mt-16">
+            <Title title={"My Products"}></Title>
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <ThemeProvider theme={montserratFont}>
@@ -60,8 +62,8 @@ const MyProducts = () => {
                                 <TableCell align="left">Upvote</TableCell>
                                 <TableCell align="left">Downvote</TableCell>
                                 <TableCell align="left">Status</TableCell>
-                                <TableCell align="left">Update</TableCell>
-                                <TableCell align="left">Delete</TableCell>
+                                <TableCell align="left"></TableCell>
+                                <TableCell align="left"></TableCell>
                             </TableRow>
                         </TableHead>
                     </ThemeProvider>

@@ -1,4 +1,4 @@
-import { Add, Logout, ReviewsOutlined } from "@mui/icons-material";
+import { Add, Logout, ReportOutlined, ReviewsOutlined } from "@mui/icons-material";
 import { Box, Divider, List, ListItem, ListItemButton, ListItemIcon, ListItemText, ThemeProvider, createTheme } from "@mui/material";
 import { CgProfile } from "react-icons/cg";
 import { FaHome } from "react-icons/fa";
@@ -62,6 +62,14 @@ const Dashboard = () => {
                                             <ReviewsOutlined />
                                         </ListItemIcon>
                                         <ListItemText primary="Review Products" />
+                                    </ListItemButton>
+                                </ListItem>
+                                <ListItem disablePadding>
+                                    <ListItemButton href="/dashboard/reportedContents">
+                                        <ListItemIcon style={{ fontSize: 25 }}>
+                                            <ReportOutlined />
+                                        </ListItemIcon>
+                                        <ListItemText primary="Reported Products" />
                                     </ListItemButton>
                                 </ListItem>
                             </List>

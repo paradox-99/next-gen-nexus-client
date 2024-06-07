@@ -10,6 +10,7 @@ import FeaturedCart from '../../components/cart/FeaturedCart';
 import useAuth from '../../hooks/useAuth';
 import Carts from '../../components/cart/Carts';
 import { CustomButton } from '../../components/basic/basicComponents';
+import Title from '../shared/Title';
 
 const Homepage = () => {
 
@@ -38,7 +39,7 @@ const Homepage = () => {
                             className="w-60 lg:w-80"
                         >
                             <SwiperSlide className='rounded-xl'>
-                                <div className='bg-[#FED18C] h-60 lg:h-96 flex flex-col justify-center items-center'>
+                                <div className='bg-[#FED18C] h-60 lg:h-72 flex flex-col justify-center items-center'>
                                     <Button variant="contained" href='/products'
                                         style={{
                                             background: '#D6EFFF',
@@ -54,7 +55,7 @@ const Homepage = () => {
                                 </div>
                             </SwiperSlide>
                             <SwiperSlide className='rounded-xl'>
-                                <div className='bg-[#FE654F] h-60 lg:h-96 flex flex-col justify-center items-center'>
+                                <div className='bg-[#FE654F] h-60 lg:h-72 flex flex-col justify-center items-center'>
                                     <Button variant="contained" href='/products'
                                         style={{
                                             background: '#D6EFFF',
@@ -70,7 +71,7 @@ const Homepage = () => {
                                 </div>
                             </SwiperSlide>
                             <SwiperSlide className='rounded-xl'>
-                                <div className='bg-[#FED99B] h-60 lg:h-96 flex flex-col justify-center items-center'>
+                                <div className='bg-[#FED99B] h-60 lg:h-72 flex flex-col justify-center items-center'>
                                     <Button variant="contained" href='/products'
                                         style={{
                                             background: '#D6EFFF',
@@ -91,8 +92,8 @@ const Homepage = () => {
                 <Link to={'/signin'} className='bg-[#FE654F] p-3 md:p-4 lg:p-5 w-36 text-center mt-10 font-montserrat text-xl font-semibold hover:border-b-4 hover:bg-[#FED99B] rounded-t-md hover:border-black'>Join Now</Link>
             </div>
             <div className="mt-24 max-w-7xl lg:mx-auto md:mx-7">
-                <h1 className='text-5xl text-center font-bold mb-5'>Featured Products</h1>
-                <div className='mt-16 grid grid-cols-1 lg:grid-cols-2 gap-8'>
+                <Title title={"Featured Products"}></Title>
+                <div className=' grid grid-cols-1 lg:grid-cols-2 gap-8'>
                     {
                         products?.featuredProducts?.map((product) => <FeaturedCart
                             key={product._id}
@@ -104,8 +105,8 @@ const Homepage = () => {
                 </div>
             </div>
             <div className="mt-24 max-w-7xl lg:mx-auto md:mx-7">
-                <h1 className='text-5xl text-center font-bold mb-5'>Trending Products</h1>
-                <div className='mt-16 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5'>
+                <Title title={"Treading Products"}></Title>
+                <div className=' grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5'>
                     {
                         products?.trendingProducts?.map((product) => <Carts
                             key={product._id}

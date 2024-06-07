@@ -3,7 +3,6 @@ import useAuth from "../../../hooks/useAuth";
 import { useState } from "react";
 import { Verified } from "@mui/icons-material";
 import { blue } from "@mui/material/colors";
-import { Bars } from "react-loader-spinner";
 
 const montserratFont = createTheme({
     typography: {
@@ -13,15 +12,6 @@ const montserratFont = createTheme({
         ].join(','),
     },
 });
-
-// const poppinsFont = createTheme({
-//     typography: {
-//         fontFamily: [
-//             'Poppins',
-//             'sans-serif',
-//         ].join(','),
-//     },
-// });
 
 const UserProfile = () => {
 

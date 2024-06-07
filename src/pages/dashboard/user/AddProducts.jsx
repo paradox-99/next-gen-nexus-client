@@ -8,6 +8,7 @@ import { TagsInput } from "react-tag-input-component";
 import './styles.css'
 import useAxiosPublic from '../../../hooks/useAxiosPublic'
 import toast from "react-hot-toast";
+import Title from "../../shared/Title";
 
 const upload_url = `https://api.imgbb.com/1/upload?key=cab06b1596f541fb90cf941719f5f573`
 
@@ -71,7 +72,7 @@ const AddProducts = () => {
 
     return (
         <div className="px-20 py-14 w-full flex flex-col justify-center items-center">
-            <h1 className="text-4xl font-montserrat font-semibold">Add Products</h1>
+            <Title title={"Add Products"}></Title>
             <form onSubmit={handleSubmit(onSubmit)} className="w-full">
                 <ThemeProvider theme={poppinsFont}>
                     <Box
