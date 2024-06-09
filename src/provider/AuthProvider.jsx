@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateEmail, updatePassword, updateProfile } from "firebase/auth";
 import auth from "../firebase/firebase.config";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 export const AuthContext = createContext(null);
 
@@ -11,6 +12,7 @@ const AuthProvider = ({ children }) => {
     const [status, setStatus] = useState(true);
     const googleProvider = new GoogleAuthProvider();
     const gitHubProvider = new GithubAuthProvider();
+    const axiosPublic = useAxiosPublic();
 
     const handleCreateUser = (email, password) => {
         setStatus(true);
@@ -33,15 +35,15 @@ const AuthProvider = ({ children }) => {
 
     const updateUser = (userName, email, password, url) => {
 
-        console.log("password:",password);
+        console.log("password:", password);
         return updateEmail(auth.currentUser, email)
             .then(
                 updateProfile(auth.currentUser, {
                     displayName: userName,
                     photoURL: url
                 })
-                .then(
-                    updatePassword(user, password))
+                    .then(
+                        updatePassword(user, password))
             )
     }
 
@@ -53,7 +55,20 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             setUser(user);
-            setStatus(false);
+            if (user) {
+                const userInfo = { email: user.email };
+                axiosPublic.post('/jwt', userInfo)
+                    .then(res => {
+                        if (res.data.accessToken) {
+                            localStorage.setItem('accessToken', res.data.accessToken);
+                            setStatus(false);
+                        }
+                    })
+            }
+            else {
+                localStorage.removeItem('access-token');
+                setStatus(false);
+            }
         });
 
         return (() => {

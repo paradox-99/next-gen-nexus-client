@@ -8,7 +8,7 @@ import Title from "../../shared/Title";
 import { IoEyeOutline } from "react-icons/io5";
 import { FaRegEdit } from "react-icons/fa";
 import { useState } from "react";
-import { Add, CancelOutlined } from "@mui/icons-material";
+import { CancelOutlined } from "@mui/icons-material";
 import { CustomTextField } from "../../../components/basic/basicComponents";
 import Swal from "sweetalert2";
 import { IoIosAddCircleOutline } from "react-icons/io";
@@ -41,7 +41,7 @@ const ManageCoupon = () => {
     const [open, setOpen] = useState(false);
     const [isEditable, setEditable] = useState(false);
     const [coup, setCoup] = useState();
-    const [ addOrUpdate, setAddOrUpdate] = useState(true);
+    const [addOrUpdate, setAddOrUpdate] = useState(true);
 
     const { refetch, data: coupons } = useQuery({
         queryKey: ['coupons'],
@@ -95,7 +95,7 @@ const ManageCoupon = () => {
     const setEdit = () => {
         setOpen(true);
         setEditable(true);
-        setAddOrUpdate(!addOrUpdate);
+        setAddOrUpdate(false);
     }
 
     const setEdit2 = (coupon) => {
@@ -106,15 +106,15 @@ const ManageCoupon = () => {
     }
 
     const updateCoupon = async (id, info) => {
-        // await axiosPublic.put(`/updateCoupon/${id}`, info)
-        //     .then(res => {
-        //         if (res.data.modifiedCount > 0) {
-        //             toast.success("Updated successfully.")
-        //             refetch();
-        //             setOpen(false);
-        //         }
-        //     })
-        console.log("called update");
+        await axiosPublic.put(`/updateCoupon/${id}`, info)
+            .then(res => {
+                if (res.data.modifiedCount > 0) {
+                    toast.success("Updated successfully.")
+                    refetch();
+                    setOpen(false);
+                }
+            })
+        console.log(info);
 
     }
 
@@ -128,61 +128,63 @@ const ManageCoupon = () => {
     const addNewCoupon = async (info) => {
         await axiosPublic.post('/addCoupon', info)
             .then(res => {
-                if (res.data.insertedCount > 0) {
+                if (res.data.insertedId) {
+                    setOpen(false);
                     toast.success("Added successfully.")
                     refetch();
-                    setOpen(false);
                 }
             })
 
-        console.log("called add new");
+        console.log(info);
     }
 
     return (
         <div className="flex flex-col w-full items-center px-20 mt-16">
             <Title title={"Coupons"}></Title>
-            <TableContainer component={Paper}>
-                <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                    <ThemeProvider theme={montserratFont}>
-                        <TableHead>
-                            <TableRow style={{ fontWeight: 600 }}>
-                                <TableCell>Coupon Code</TableCell>
-                                <TableCell align="left">Expiry Date</TableCell>
-                                <TableCell align="left">Discount</TableCell>
-                                <TableCell align="left"></TableCell>
-                                <TableCell align="left"></TableCell>
-                                <TableCell align="left"></TableCell>
-                            </TableRow>
-                        </TableHead>
-                    </ThemeProvider>
-                    <ThemeProvider theme={poppinsFont}>
-                        <TableBody>
-                            {coupons?.map((coupon) => (
-                                <TableRow
-                                    hover
-                                    key={coupon._id}
-                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                                >
-                                    <TableCell component="th" scope="row">
-                                        {coupon.coupon_code}
-                                    </TableCell>
-                                    <TableCell align="left">{coupon.expiration_date}</TableCell>
-                                    <TableCell align="left">{coupon.discount_amount}%</TableCell>
-                                    <TableCell align="left"><button onClick={() => viewDetails(coupon)} className="text-2xl px-2 py-1 rounded"><IoEyeOutline /></button>
-                                    </TableCell>
-                                    <TableCell align="right">
-                                        <button onClick={() => setEdit2(coupon)} className="px-2 py-1 text-2xl"><FaRegEdit /></button>
-                                    </TableCell>
-                                    <TableCell align="right">
-                                        <button onClick={() => deleteCoupon(coupon._id)} className="text-red-600 text-2xl px-2 py-1 rounded"><MdDelete />
-                                        </button>
-                                    </TableCell>
+            <Paper sx={{ width: '100%', overflow: 'hidden' }}>
+                <TableContainer component={Paper} sx={{ maxHeight: 440 }}>
+                    <Table sx={{ width: '100%' }} aria-label="simple table" stickyHeader >
+                        <ThemeProvider theme={montserratFont}>
+                            <TableHead>
+                                <TableRow style={{ fontWeight: 600 }}>
+                                    <TableCell>Coupon Code</TableCell>
+                                    <TableCell align="left">Expiry Date</TableCell>
+                                    <TableCell align="left">Discount</TableCell>
+                                    <TableCell align="left"></TableCell>
+                                    <TableCell align="left"></TableCell>
+                                    <TableCell align="left"></TableCell>
                                 </TableRow>
-                            ))}
-                        </TableBody>
-                    </ThemeProvider>
-                </Table>
-            </TableContainer>
+                            </TableHead>
+                        </ThemeProvider>
+                        <ThemeProvider theme={poppinsFont}>
+                            <TableBody>
+                                {coupons?.map((coupon) => (
+                                    <TableRow
+                                        hover
+                                        key={coupon._id}
+                                        sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                    >
+                                        <TableCell component="th" scope="row">
+                                            {coupon.coupon_code}
+                                        </TableCell>
+                                        <TableCell align="left">{coupon.expiration_date}</TableCell>
+                                        <TableCell align="left">{coupon.discount_amount}%</TableCell>
+                                        <TableCell align="left"><button onClick={() => viewDetails(coupon)} className="text-2xl px-2 py-1 rounded"><IoEyeOutline /></button>
+                                        </TableCell>
+                                        <TableCell align="right">
+                                            <button onClick={() => setEdit2(coupon)} className="px-2 py-1 text-2xl"><FaRegEdit /></button>
+                                        </TableCell>
+                                        <TableCell align="right">
+                                            <button onClick={() => deleteCoupon(coupon._id)} className="text-red-600 text-2xl px-2 py-1 rounded"><MdDelete />
+                                            </button>
+                                        </TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        </ThemeProvider>
+                    </Table>
+                </TableContainer>
+            </Paper>
             <div className="absolute right-20 bottom-10">
                 <IconButton style={{ color: "black" }} onClick={openNewCoupon}>
                     <IoIosAddCircleOutline className="text-4xl" />
@@ -202,7 +204,7 @@ const ManageCoupon = () => {
                         const discount_amount = formJson.discount;
 
                         const info = { coupon_code, expiration_date, coupon_description, discount_amount }
-                        if(coup._id)
+                        if (coup?._id)
                             updateCoupon(coup?._id, info)
                         else
                             addNewCoupon(info)
@@ -275,9 +277,9 @@ const ManageCoupon = () => {
                     </DialogContent>
                     <DialogActions>
                         <div className={`flex gap-10 ${isEditable ? 'block' : 'hidden'}`}>
-                            <button type="submit" onSubmit={onsubmit} className={`outline font-poppins outline-1 px-2 py-1 rounded ${isEditable ? 'block' : 'hidden'} hover:bg-[#D6EFFF]`}>{addOrUpdate ? "Add" : "Update"}</button>
+                            <button type="submit" onSubmit={onsubmit} className={`outline font-poppins outline-1 px-2 py-1 mr-5 rounded ${isEditable ? 'block' : 'hidden'} hover:bg-[#D6EFFF]`}>{addOrUpdate ? "Add" : "Update"}</button>
 
-                            <button onClick={() => setEditable(false)} className={`outline font-poppins outline-1 px-2 py-1 rounded ${isEditable ? 'block' : 'hidden'} hover:bg-[#D6EFFF]`}>Cancel</button>
+                            <button onClick={() => setEditable(false)} className={`outline font-poppins outline-1 px-2 py-1 rounded ${isEditable ? 'block' : 'hidden'} hover:bg-[#D6EFFF] ${addOrUpdate ? 'hidden' : 'block'}`}>Cancel</button>
                         </div>
                         <div className={`${!isEditable ? 'block' : 'hidden'}`}>
                             <button onClick={setEdit} {...!isEditable ? { disabled: false } : { disabled: true }} className="px-2 py-1 text-2xl"><FaRegEdit /></button>
