@@ -1,7 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-// import useAuth from "../../../hooks/useAuth";
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, ThemeProvider, createTheme } from "@mui/material";
-import toast from "react-hot-toast";
 import Title from "../../shared/Title";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
@@ -44,20 +42,18 @@ const ManageUsers = () => {
     const makeAdmin = async (id) => {
         Swal.fire({
             title: "Are you sure?",
-            text: "You won't be able to revert this!",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Delete it!"
+            confirmButtonText: "Proceed"
         }).then(async (result) => {
             if (result.isConfirmed) {
-                await axiosSecure.delete(`/deleteCoupon/${id}`)
+                await axiosSecure.patch(`/makeAdmin/${id}`)
                     .then(res => {
-                        if (res.data.deletedCount > 0) {
+                        if (res.data.modifiedCount > 0) {
                             Swal.fire({
-                                title: "Deleted!",
-                                text: "User has been deleted.",
+                                title: "Successful!",
                                 icon: "success"
                             });
                             refetch();
@@ -68,17 +64,31 @@ const ManageUsers = () => {
     }
 
     const makeModerator = async (id) => {
-        await axiosSecure.delete(`/makeModerator/user?id=${id}`)
-            .then(res => {
-                if (res.data.deletedCount > 0) {
-                    toast.success("Deleted successfully.")
-                    refetch();
-                }
-            })
+        Swal.fire({
+            title: "Are you sure?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Proceed"
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                await axiosSecure.patch(`/makeModerator/${id}`)
+                    .then(res => {
+                        if (res.data.modifiedCount > 0) {
+                            Swal.fire({
+                                title: "Success!",
+                                icon: "success"
+                            });
+                            refetch();
+                        }
+                    })
+            }
+        });
     }
 
     return (
-        <div className="flex flex-col w-full px-40 mt-12">
+        <div className="flex flex-col w-full px-32 mt-12">
             <Title title={"Manage Users"}></Title>
             <Paper sx={{ width: '100%', overflow: 'hidden' }}>
                 <TableContainer component={Paper} sx={{ maxHeight: 500 }}>
@@ -88,7 +98,7 @@ const ManageUsers = () => {
                                 <TableRow style={{ fontWeight: 600 }}>
                                     <TableCell>Name</TableCell>
                                     <TableCell align="left">Email</TableCell>
-                                    <TableCell align="right"></TableCell>
+                                    <TableCell align="left">Role</TableCell>
                                     <TableCell align="right"></TableCell>
                                 </TableRow>
                             </TableHead>
@@ -108,14 +118,16 @@ const ManageUsers = () => {
                                             {user.email}
                                         </TableCell>
                                         <TableCell align="left">
-                                            <button onClick={() => makeModerator(user._id)} className="outline outline-1 px-2 py-1 rounded">
+                                            {user?.designation === "admin" ? <p>Admin</p> : user?.designation === "moderator" ? <p>Moderator</p> : <button onClick={() => makeModerator(user._id)} className="outline outline-1 px-2 py-1 rounded">
                                                 Make Moderator
-                                            </button>
+                                            </button>}
                                         </TableCell>
                                         <TableCell align="left">
-                                            <button onClick={() => makeAdmin(user._id)} className="flex items-center gap-1 text-red-600 outline outline-1 px-2 py-1 rounded">
-                                                Make Admin
-                                            </button>
+                                            {
+                                                (user?.designation !== "admin" || user?.designation !== "moderator") && <button onClick={() => makeAdmin(user._id)} className={`${user?.designation === "admin" ? "hidden" : "flex"} items-center gap-1 text-red-600 outline outline-1 px-2 py-1 rounded`}>
+                                                    Make Admin
+                                                </button>
+                                            }
                                         </TableCell>
                                     </TableRow>
                                 ))}

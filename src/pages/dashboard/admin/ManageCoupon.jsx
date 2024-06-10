@@ -1,6 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "../../../hooks/useAxiosPublic";
-// import useAuth from "../../../hooks/useAuth";
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, ThemeProvider, createTheme } from "@mui/material";
 import { MdDelete } from "react-icons/md";
 import toast from "react-hot-toast";
@@ -12,6 +10,7 @@ import { CancelOutlined } from "@mui/icons-material";
 import { CustomTextField } from "../../../components/basic/basicComponents";
 import Swal from "sweetalert2";
 import { IoIosAddCircleOutline } from "react-icons/io";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const montserratFont = createTheme({
     typography: {
@@ -36,7 +35,7 @@ const poppinsFont = createTheme({
 
 const ManageCoupon = () => {
 
-    const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
     // const { user } = useAuth();
     const [open, setOpen] = useState(false);
     const [isEditable, setEditable] = useState(false);
@@ -46,7 +45,7 @@ const ManageCoupon = () => {
     const { refetch, data: coupons } = useQuery({
         queryKey: ['coupons'],
         queryFn: async () => {
-            const response = await axiosPublic.get('/coupons');
+            const response = await axiosSecure.get('/coupons');
             return response.data;
         }
     })
@@ -62,7 +61,7 @@ const ManageCoupon = () => {
             confirmButtonText: "Delete it!"
         }).then(async (result) => {
             if (result.isConfirmed) {
-                await axiosPublic.delete(`/deleteCoupon/${id}`)
+                await axiosSecure.delete(`/deleteCoupon/${id}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
                             Swal.fire({
@@ -106,7 +105,7 @@ const ManageCoupon = () => {
     }
 
     const updateCoupon = async (id, info) => {
-        await axiosPublic.put(`/updateCoupon/${id}`, info)
+        await axiosSecure.put(`/updateCoupon/${id}`, info)
             .then(res => {
                 if (res.data.modifiedCount > 0) {
                     toast.success("Updated successfully.")
@@ -126,7 +125,7 @@ const ManageCoupon = () => {
     }
 
     const addNewCoupon = async (info) => {
-        await axiosPublic.post('/addCoupon', info)
+        await axiosSecure.post('/addCoupon', info)
             .then(res => {
                 if (res.data.insertedId) {
                     setOpen(false);
