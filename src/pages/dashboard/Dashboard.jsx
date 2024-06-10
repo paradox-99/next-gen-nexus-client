@@ -8,6 +8,7 @@ import useAuth from "../../hooks/useAuth";
 import { FaUsersGear } from "react-icons/fa6";
 import { BiSolidCoupon } from "react-icons/bi";
 import { TbLayoutDashboardFilled } from "react-icons/tb";
+import useDesignation from "../../hooks/useDesignation";
 
 const montserratFont = createTheme({
     typography: {
@@ -22,6 +23,8 @@ const Dashboard = () => {
 
     const { logOut } = useAuth();
 
+    const [designation] = useDesignation();
+
     return (
         <div className="flex">
             <ThemeProvider theme={montserratFont}>
@@ -35,70 +38,76 @@ const Dashboard = () => {
                         </div>
                         <nav aria-label="main mailbox folders">
                             <List>
-                                <ListItem disablePadding>
-                                    <ListItemButton href="/dashboard/userProfile">
-                                        <ListItemIcon style={{ fontSize: 25 }}>
-                                            <CgProfile />
-                                        </ListItemIcon>
-                                        <ListItemText primary="My Profile" />
-                                    </ListItemButton>
-                                </ListItem>
-                                <ListItem disablePadding>
-                                    <ListItemButton href="/dashboard/addProducts">
-                                        <ListItemIcon style={{ fontSize: 25 }}>
-                                            <Add />
-                                        </ListItemIcon>
-                                        <ListItemText primary="Add Products" />
-                                    </ListItemButton>
-                                </ListItem>
-                                <ListItem disablePadding>
-                                    <ListItemButton href="/dashboard/myProducts">
-                                        <ListItemIcon style={{ fontSize: 25 }}>
-                                            <SiBmcsoftware />
-                                        </ListItemIcon>
-                                        <ListItemText primary="My Products" />
-                                    </ListItemButton>
-                                </ListItem>
-                                <ListItem disablePadding>
-                                    <ListItemButton href="/dashboard/productsReview">
-                                        <ListItemIcon style={{ fontSize: 25 }}>
-                                            <ReviewsOutlined />
-                                        </ListItemIcon>
-                                        <ListItemText primary="Review Products" />
-                                    </ListItemButton>
-                                </ListItem>
-                                <ListItem disablePadding>
-                                    <ListItemButton href="/dashboard/reportedContents">
-                                        <ListItemIcon style={{ fontSize: 25 }}>
-                                            <ReportOutlined />
-                                        </ListItemIcon>
-                                        <ListItemText primary="Reported Products" />
-                                    </ListItemButton>
-                                </ListItem>
-                                <ListItem disablePadding>
-                                    <ListItemButton href="/dashboard/adminDashboard">
-                                        <ListItemIcon style={{ fontSize: 25 }}>
-                                            <TbLayoutDashboardFilled />
-                                        </ListItemIcon>
-                                        <ListItemText primary="Dashboard" />
-                                    </ListItemButton>
-                                </ListItem>
-                                <ListItem disablePadding>
-                                    <ListItemButton href="/dashboard/manageUsers">
-                                        <ListItemIcon style={{ fontSize: 25 }}>
-                                            <FaUsersGear />
-                                        </ListItemIcon>
-                                        <ListItemText primary="Manage Users" />
-                                    </ListItemButton>
-                                </ListItem>
-                                <ListItem disablePadding>
-                                    <ListItemButton href="/dashboard/manageCoupons">
-                                        <ListItemIcon style={{ fontSize: 25 }}>
-                                            <BiSolidCoupon />
-                                        </ListItemIcon>
-                                        <ListItemText primary="Manage Coupons" />
-                                    </ListItemButton>
-                                </ListItem>
+                                {designation === 'user' && <>
+                                    <ListItem disablePadding>
+                                        <ListItemButton href="/dashboard/userProfile">
+                                            <ListItemIcon style={{ fontSize: 25 }}>
+                                                <CgProfile />
+                                            </ListItemIcon>
+                                            <ListItemText primary="My Profile" />
+                                        </ListItemButton>
+                                    </ListItem>
+                                    <ListItem disablePadding>
+                                        <ListItemButton href="/dashboard/addProducts">
+                                            <ListItemIcon style={{ fontSize: 25 }}>
+                                                <Add />
+                                            </ListItemIcon>
+                                            <ListItemText primary="Add Products" />
+                                        </ListItemButton>
+                                    </ListItem>
+                                    <ListItem disablePadding>
+                                        <ListItemButton href="/dashboard/myProducts">
+                                            <ListItemIcon style={{ fontSize: 25 }}>
+                                                <SiBmcsoftware />
+                                            </ListItemIcon>
+                                            <ListItemText primary="My Products" />
+                                        </ListItemButton>
+                                    </ListItem>
+                                </>}
+                                {designation === 'moderator' && <>
+                                    <ListItem disablePadding>
+                                        <ListItemButton href="/dashboard/productsReview">
+                                            <ListItemIcon style={{ fontSize: 25 }}>
+                                                <ReviewsOutlined />
+                                            </ListItemIcon>
+                                            <ListItemText primary="Review Products" />
+                                        </ListItemButton>
+                                    </ListItem>
+                                    <ListItem disablePadding>
+                                        <ListItemButton href="/dashboard/reportedContents">
+                                            <ListItemIcon style={{ fontSize: 25 }}>
+                                                <ReportOutlined />
+                                            </ListItemIcon>
+                                            <ListItemText primary="Reported Products" />
+                                        </ListItemButton>
+                                    </ListItem>
+                                </>}
+                                {designation === 'admin' && <>
+                                    <ListItem disablePadding>
+                                        <ListItemButton href="/dashboard/adminDashboard">
+                                            <ListItemIcon style={{ fontSize: 25 }}>
+                                                <TbLayoutDashboardFilled />
+                                            </ListItemIcon>
+                                            <ListItemText primary="Dashboard" />
+                                        </ListItemButton>
+                                    </ListItem>
+                                    <ListItem disablePadding>
+                                        <ListItemButton href="/dashboard/manageUsers">
+                                            <ListItemIcon style={{ fontSize: 25 }}>
+                                                <FaUsersGear />
+                                            </ListItemIcon>
+                                            <ListItemText primary="Manage Users" />
+                                        </ListItemButton>
+                                    </ListItem>
+                                    <ListItem disablePadding>
+                                        <ListItemButton href="/dashboard/manageCoupons">
+                                            <ListItemIcon style={{ fontSize: 25 }}>
+                                                <BiSolidCoupon />
+                                            </ListItemIcon>
+                                            <ListItemText primary="Manage Coupons" />
+                                        </ListItemButton>
+                                    </ListItem>
+                                </>}
                             </List>
                         </nav>
                         <Divider />

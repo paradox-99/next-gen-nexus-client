@@ -15,6 +15,8 @@ import ManageUsers from "../pages/dashboard/admin/ManageUsers";
 import ManageCoupon from "../pages/dashboard/admin/ManageCoupon";
 import Details from "../pages/viewDetails/Details";
 import PrivateRoute from "../private/PrivateRoute"
+import ModeratorRoute from "../private/ModeratorRoute";
+import AdminRoute from "../private/AdminRoute";
 
 const router = createBrowserRouter([
     {
@@ -49,7 +51,7 @@ const router = createBrowserRouter([
         children: [
             // user routes
             {
-                path:'/dashboard/userProfile',
+                path: '/dashboard/userProfile',
                 element: <UserProfile></UserProfile>
             },
             {
@@ -64,25 +66,25 @@ const router = createBrowserRouter([
             // moderator routes
             {
                 path: '/dashboard/productsReview',
-                element: <ProductsReview></ProductsReview>
+                element: <ModeratorRoute><ProductsReview></ProductsReview></ModeratorRoute>
             },
             {
                 path: '/dashboard/reportedContents',
-                element: <ReportedContents></ReportedContents>
+                element: <ModeratorRoute><ReportedContents></ReportedContents></ModeratorRoute>
             },
 
             // admin routes
             {
                 path: '/dashboard/adminDashboard',
-                element: <DashboardAdmin></DashboardAdmin>
+                element: <AdminRoute><DashboardAdmin></DashboardAdmin></AdminRoute>
             },
             {
                 path: '/dashboard/manageUsers',
-                element: <ManageUsers></ManageUsers>
+                element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
             },
             {
                 path: '/dashboard/manageCoupons',
-                element: <ManageCoupon></ManageCoupon>
+                element: <AdminRoute><ManageCoupon></ManageCoupon></AdminRoute>
             }
         ]
     }

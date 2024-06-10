@@ -8,6 +8,7 @@ import { CustomButton } from "../../components/basic/basicComponents";
 import useAuth from "../../hooks/useAuth";
 import { TbLayoutDashboardFilled } from "react-icons/tb";
 import { FaHome } from "react-icons/fa";
+import useDesignation from "../../hooks/useDesignation";
 
 const Navbar = () => {
 
@@ -15,6 +16,8 @@ const Navbar = () => {
     const [open, setOpen] = React.useState(false);
     const [anchorEl, setAnchorEl] = React.useState(null);
     const Open = Boolean(anchorEl);
+    const [designation] = useDesignation();
+
     const toggleDrawer = (newOpen) => () => {
         setOpen(newOpen);
     };
@@ -135,7 +138,15 @@ const Navbar = () => {
                         >
                             <Typography sx={{ paddingLeft: 2, paddingRight: 5, fontSize: 20, fontWeight: 600 }}>{user?.displayName}</Typography>
                             <MenuItem onClick={handleClose}>
-                                <Link to={'/dashboard'} className="flex items-center gap-2"><TbLayoutDashboardFilled /> Dashboard</Link>
+                            {
+                                designation === "user" && <Link to={'/dashboard/userProfile'} className="flex items-center gap-2"><TbLayoutDashboardFilled /> Dashboard</Link>
+                            }
+                            {
+                                designation === "admin" && <Link to={'/dashboard/adminDashboard'} className="flex items-center gap-2"><TbLayoutDashboardFilled /> Dashboard</Link>
+                            }
+                            {
+                                designation === "moderator" && <Link to={'/dashboard/productsReview'} className="flex items-center gap-2"><TbLayoutDashboardFilled /> Dashboard</Link>
+                            }
                             </MenuItem>
                             <Divider />
                             <MenuItem onClick={logOut}>

@@ -4,20 +4,19 @@ import useAxiosSecure from "./useAxiosSecure";
 
 const useAdmin = () => {
 
-    const {user, loading} = useAuth();
+    const {user, status} = useAuth();
     const axiosSecure = useAxiosSecure();
 
-    const { data: isAdmin, isPending: isAdminloading } = useQuery({
+    const { data: isAdmin, isPending: isAdminLoading } = useQuery({
         queryKey: [user?.email, 'isAdmin'],
-        enabled: !loading,
+        enabled: !status,
         queryFn: async () => {
-            console.log('asking or checking is admin', user)
-            const res = await axiosSecure.get(`/users/admin/${user.email}`);
+            const res = await axiosSecure.get(`/users/checkAdmin/${user.email}`);
             return res.data?.admin;
         }
     })
 
-    return [isAdmin, isAdminloading]
+    return [isAdmin, isAdminLoading]
 };
 
 export default useAdmin;
