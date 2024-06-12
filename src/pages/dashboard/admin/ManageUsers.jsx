@@ -88,7 +88,7 @@ const ManageUsers = () => {
     }
 
     return (
-        <div className="flex flex-col w-full px-32 mt-12">
+        <div className="flex flex-col w-full md:px-7 lg:px-14 xl:px-32 mt-12">
             <Title title={"Manage Users"}></Title>
             <Paper sx={{ width: '100%', overflow: 'hidden' }}>
                 <TableContainer component={Paper} sx={{ maxHeight: 500 }}>

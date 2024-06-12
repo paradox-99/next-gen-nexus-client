@@ -70,7 +70,7 @@ const AddProducts = () => {
     });
 
     return (
-        <div className="px-20 py-14 w-full flex flex-col justify-center items-center">
+        <div className=" xl:px-20 py-14 w-full flex flex-col justify-center items-center">
             <Title title={"Add Products"}></Title>
             <form onSubmit={handleSubmit(onSubmit)} className="w-full">
                 <ThemeProvider theme={poppinsFont}>

@@ -72,7 +72,7 @@ const ProductsReview = () => {
     }
 
     return (
-        <div className="flex flex-col w-full items-center px-20 mt-10">
+        <div className="flex flex-col w-full items-center md:px-7 lg:px-14 xl:px-20 mt-10">
             <Title title={"Review Products"}></Title>
             <Paper sx={{ width: '100%', overflow: 'hidden' }}>
                 <TableContainer component={Paper} sx={{ maxHeight: 550 }}>

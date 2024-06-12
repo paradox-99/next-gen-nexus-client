@@ -51,7 +51,7 @@ const ReportedContents = () => {
     }
 
     return (
-        <div className="flex flex-col w-full justify-center items-center px-60 mt-16">
+        <div className="flex flex-col w-full justify-center items-center md:px-7 lg:px-14 xl:px-60 mt-16">
             <Title title={"Reported Products"}></Title>
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">

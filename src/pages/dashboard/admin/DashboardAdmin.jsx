@@ -9,7 +9,7 @@ const poppinsFont = createTheme({
             'Poppins',
             'sans-serif',
         ].join(','),
-        fontSize: 16,
+        fontSize: 12,
     },
 });
 
@@ -33,7 +33,7 @@ const DashboardAdmin = () => {
     ];
 
     return (
-        <div className='flex justify-center items-center min-h-screen px-60'>
+        <div className='flex justify-center items-center min-h-screen lg:px-36 xl:px-60'>
             <ThemeProvider theme={poppinsFont}>
                 <PieChart
                     series={[

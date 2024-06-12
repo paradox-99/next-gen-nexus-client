@@ -5,7 +5,7 @@ import { Verified } from "@mui/icons-material";
 import { blue } from "@mui/material/colors";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 
 const montserratFont = createTheme({
@@ -73,7 +73,7 @@ const UserProfile = () => {
 
     return (
         <div className="flex justify-center items-center min-h-screen">
-            <div className="flex gap-6">
+            <div className="flex flex-col mt-20 lg:mt-0 lg:flex-row gap-6">
                 <div className="flex flex-col items-center justify-center">
                     <figure>
                         <img src={user?.photoURL} alt={user?.displayName} className="w-52 h-52 rounded-full" />
@@ -81,7 +81,7 @@ const UserProfile = () => {
                 </div>
                 <Divider orientation="vertical" variant="middle" flexItem />
                 <div>
-                    <h1 className="text-5xl font-semibold mt-8">{user?.displayName}</h1>
+                    <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold mt-8">{user?.displayName}</h1>
                     <h3 className="text-xl font-medium mt-3">Email: {user?.email}</h3>
                     <div className={`${!subscriptionStatus ? 'block' : 'hidden'}`}>
                         <div className="mt-10">
