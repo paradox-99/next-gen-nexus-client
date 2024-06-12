@@ -58,6 +58,7 @@ const Login = () => {
                     createUser(info)
                     setOpen(true);
                 }
+                navigate(location?.state ? location.state : '/')
             })
             .catch((error) => { setError(error.message) });
     }
@@ -70,6 +71,7 @@ const Login = () => {
                     createUser(info)
                     setOpen(true);
                 }
+                navigate(location?.state ? location.state : '/')
             })
             .catch((error) => { setError(error.message) });
     }

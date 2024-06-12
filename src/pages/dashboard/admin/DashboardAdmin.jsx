@@ -1,6 +1,6 @@
 import { PieChart } from '@mui/x-charts/PieChart';
 import { useQuery } from '@tanstack/react-query';
-import useAxiosPublic from '../../../hooks/useAxiosPublic';
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { ThemeProvider, createTheme } from '@mui/material';
 
 const poppinsFont = createTheme({
@@ -15,15 +15,17 @@ const poppinsFont = createTheme({
 
 const DashboardAdmin = () => {
 
-    const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
 
     const { data: counts } = useQuery({
         queryKey: ['adminDashboard'],
         queryFn: async () => {
-            const response = await axiosPublic.get("/adminDashboardData");
+            const response = await axiosSecure.get("/adminDashboardData");
             return response.data;
         }
     });
+
+    console.log(counts);
 
     const data = [
         { id: 0, value: counts?.usersCount, label: 'Total Users' },

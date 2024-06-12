@@ -1,8 +1,10 @@
-import { Chip, Divider, Grow, ThemeProvider, ToggleButton, ToggleButtonGroup, createTheme } from "@mui/material";
+import { Button, Chip, Divider, Grow, TextField, ThemeProvider, ToggleButton, ToggleButtonGroup, createTheme } from "@mui/material";
 import useAuth from "../../../hooks/useAuth";
 import { useState } from "react";
 import { Verified } from "@mui/icons-material";
 import { blue } from "@mui/material/colors";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import toast from "react-hot-toast";
 
 const montserratFont = createTheme({
     typography: {
@@ -15,19 +17,51 @@ const montserratFont = createTheme({
 
 const UserProfile = () => {
 
+    const axiosSecure = useAxiosSecure();
     const { user } = useAuth();
     const [alignment, setAlignment] = useState("25");
     const subscriptionStatus = false;
     const [checked, setChecked] = useState(false);
+    const [couponCode, setCouponCode] = useState();
+    const [subscriptionValue, setSubscriptionValue] = useState(25);
+    const [isValid, setIsValid] = useState(false);
 
     const handleAlignment = (event, newAlignment) => {
         setAlignment(newAlignment);
+        const value = parseInt(newAlignment)
+        setSubscriptionValue(value);
     };
 
-    const subscribeUser = () => {
-        const value = parseInt(alignment);
-        console.log(value);
+    const couponValue = (event) => {
+        const value = event.target.value;
+        setCouponCode(value);
     }
+
+    const countOriginalValue = async () => {
+        await axiosSecure.get(`/checkCoupon?code=${couponCode}`)
+            .then(res => {
+                if (res.data.message === 'coupon is valid') {
+                    setIsValid(true);
+                    const discount = res.data.discount;
+                    const originalValue = subscriptionValue - (subscriptionValue * (discount / 100));
+                    setSubscriptionValue(originalValue);
+                }
+                else {
+                    toast.error("Invalid coupon code.")
+                }
+            })
+    }
+
+    const applyCouponCode = () => {
+        const value = parseInt(alignment);
+        setSubscriptionValue(value);
+        countOriginalValue();
+    }
+
+    const subscribeUser = () => {
+        console.log(subscriptionValue);
+    }
+
 
     return (
         <div className="flex justify-center items-center min-h-screen">
@@ -45,7 +79,7 @@ const UserProfile = () => {
                         <div className="mt-10">
                             <h3 className="text-lg font-medium">Buy subscription to get pro service.</h3>
                             <button onClick={() => setChecked(!checked)} className="px-4 py-2 mt-3 bg-orange-300 rounded-full font-medium font-montserrat">Subscribe</button>
-                            <div className="h-28 w-96 flex items-center">
+                            <div className="h-52 w-96 flex items-center">
                                 <Grow
                                     in={checked}
                                     style={{ transformOrigin: '0 0 0' }}
@@ -68,6 +102,12 @@ const UserProfile = () => {
                                             </ToggleButton>
                                         </ToggleButtonGroup>
                                         <br />
+                                        <div className="mt-4 flex items-center gap-5">
+                                            <TextField onChange={couponValue} variant="outlined" placeholder="Enter Coupon code" label="Coupon code" name="couponCode" />
+                                            <Button {...isValid && {disabled: true}} onClick={applyCouponCode} variant="outlined">Apply</Button>
+                                        </div>
+                                        <br />
+                                        <p className="font-poppins">Payable amount: <span className="font-medium text-lg">${subscriptionValue}</span></p>
                                         <button onClick={subscribeUser} className="px-3 py-2 rounded-full border bg-blue-300 hover:bg-blue-200 font-semibold font-montserrat">Buy</button>
                                     </div>
                                 </Grow>
