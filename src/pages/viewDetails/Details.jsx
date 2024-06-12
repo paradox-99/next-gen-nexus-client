@@ -30,8 +30,6 @@ const Details = () => {
         }
     })
 
-    console.log(data);
-
     useEffect(() => {
         if (user?.email === data?.product_owner_info?.owner_email) {
             setDisable(true);

@@ -5,6 +5,8 @@ import { Verified } from "@mui/icons-material";
 import { blue } from "@mui/material/colors";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 
 const montserratFont = createTheme({
     typography: {
@@ -20,11 +22,19 @@ const UserProfile = () => {
     const axiosSecure = useAxiosSecure();
     const { user } = useAuth();
     const [alignment, setAlignment] = useState("25");
-    const subscriptionStatus = false;
+    let subscriptionStatus = false;
     const [checked, setChecked] = useState(false);
     const [couponCode, setCouponCode] = useState();
     const [subscriptionValue, setSubscriptionValue] = useState(25);
     const [isValid, setIsValid] = useState(false);
+
+    const {data: userData} = useQuery({
+        queryKey: ['user'],
+        queryFn: async () => {
+            const response = await axiosSecure.get(`/getUserInfo/${user.uid}`);
+            return response.data;
+            }
+    })
 
     const handleAlignment = (event, newAlignment) => {
         setAlignment(newAlignment);
@@ -58,10 +68,8 @@ const UserProfile = () => {
         countOriginalValue();
     }
 
-    const subscribeUser = () => {
-        console.log(subscriptionValue);
-    }
-
+    if(userData?.subscription === 'subscribed')
+        subscriptionStatus = true;
 
     return (
         <div className="flex justify-center items-center min-h-screen">
@@ -108,7 +116,7 @@ const UserProfile = () => {
                                         </div>
                                         <br />
                                         <p className="font-poppins">Payable amount: <span className="font-medium text-lg">${subscriptionValue}</span></p>
-                                        <button onClick={subscribeUser} className="px-3 py-2 rounded-full border bg-blue-300 hover:bg-blue-200 font-semibold font-montserrat">Buy</button>
+                                        <Link to={`/dashboard/makePayment/amount/${subscriptionValue}`} className="px-3 py-2 rounded-full border bg-blue-300 hover:bg-blue-200 font-semibold font-montserrat">Buy</Link>
                                     </div>
                                 </Grow>
                             </div>
@@ -116,7 +124,7 @@ const UserProfile = () => {
                     </div>
                     <ThemeProvider theme={montserratFont}>
                         <div className={`mt-3 ${subscriptionStatus ? 'block' : 'hidden'}`}>
-                            <Chip icon={<Verified style={{ color: blue[600] }} />} label="Verified" style={{ fontSize: 20, fontWeight: 600 }} />
+                            <Chip icon={<Verified style={{ color: blue[600] }} />} label="Subscribed" style={{ fontSize: 20, fontWeight: 600 }} />
                         </div>
                     </ThemeProvider>
                 </div>

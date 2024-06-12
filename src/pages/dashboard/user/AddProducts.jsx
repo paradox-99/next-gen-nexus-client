@@ -29,7 +29,6 @@ const AddProducts = () => {
     const axiosPublic = useAxiosPublic();
 
     const onSubmit = async (data) => {
-        console.log(data);
         const product_name = data.productName;
         const owner_name = user?.displayName;
         const owner_image = user?.photoURL;

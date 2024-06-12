@@ -113,7 +113,6 @@ const ManageCoupon = () => {
                     setOpen(false);
                 }
             })
-        console.log(info);
 
     }
 
@@ -133,8 +132,6 @@ const ManageCoupon = () => {
                     refetch();
                 }
             })
-
-        console.log(info);
     }
 
     return (

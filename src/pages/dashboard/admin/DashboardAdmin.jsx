@@ -25,8 +25,6 @@ const DashboardAdmin = () => {
         }
     });
 
-    console.log(counts);
-
     const data = [
         { id: 0, value: counts?.usersCount, label: 'Total Users' },
 

@@ -17,6 +17,7 @@ import Details from "../pages/viewDetails/Details";
 import PrivateRoute from "../private/PrivateRoute"
 import ModeratorRoute from "../private/ModeratorRoute";
 import AdminRoute from "../private/AdminRoute";
+import Payment from "../pages/payment/Payment";
 
 const router = createBrowserRouter([
     {
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/myProducts',
                 element: <MyProducts></MyProducts>
+            },
+            {
+                path: '/dashboard/makePayment/amount/:amount',
+                element: <PrivateRoute><Payment></Payment></PrivateRoute>
             },
 
             // moderator routes

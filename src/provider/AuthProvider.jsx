@@ -34,8 +34,6 @@ const AuthProvider = ({ children }) => {
     }
 
     const updateUser = (userName, email, password, url) => {
-
-        console.log("password:", password);
         return updateEmail(auth.currentUser, email)
             .then(
                 updateProfile(auth.currentUser, {
