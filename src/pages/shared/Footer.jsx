@@ -6,7 +6,7 @@ const Footer = () => {
     return (
         <div>
             <div className="bg-[#000]">
-                <div className="mt-28 max-w-7xl lg:mx-auto md:mx-7 py-14 space-y-7 md:space-y-4">
+                <div className="mt-14 max-w-7xl lg:mx-auto md:mx-7 py-14 space-y-7 md:space-y-4">
                     <div className="w-full flex flex-wrap gap-10 justify-center items-center text-xl md:text-2xl text-black">
                         <div className="bg-white p-2 md:p-3 rounded-full">
                             <FaFacebook />

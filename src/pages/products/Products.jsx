@@ -64,6 +64,12 @@ const Products = () => {
         }
     }
 
+    let find = products.length;
+    let findResult = true;
+
+    if (find === 0)
+        findResult = false;
+
     return (
         <div className="mt-28 max-w-7xl lg:mx-auto md:mx-7">
             <Helmet>
@@ -88,6 +94,9 @@ const Products = () => {
                     ></Carts>)
                 }
             </div>
+            {
+                !findResult && <p className="text-center text-xl my-10 font-montserrat w-full">Sorry no products found named: &quot;{search}&quot;</p>
+            }
             <div className="flex justify-center items-center gap-5 my-10 md:mt-20 flex-col md:flex-row">
                 <div>
                     <button onClick={handlePrevPage} className="px-4 py-2 w-fit rounded-full hover:bg-[#FED18C] font-montserrat text-sm md:text-base">Prev</button>

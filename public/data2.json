@@ -1,1 +1,177 @@
-
+[
+    {
+        "product_name": "WeatherPredict",
+        "product_image": "https://i.ibb.co/nm5hFzq/10761008-45211.jpg",
+        "description": "WeatherPredict provides accurate and up-to-date weather forecasts. With advanced meteorological data and predictive analytics, users can plan their activities with confidence, knowing they have the most reliable weather information at their fingertips.",
+        "product_owner_info": {
+            "owner_name": "Frank Miller",
+            "owner_image": "https://i.ibb.co/nDdG3qK/2147960990.jpg",
+            "owner_email": "frankmiller@example.com"
+        },
+        "tags": [
+            "weather",
+            "forecast",
+            "analytics"
+        ],
+        "external_links": [
+            "https://weatherpredict.com",
+            "https://github.com/weatherpredict"
+        ],
+        "status": "pending",
+        "upvote_count": 0,
+        "downvote_count": 0,
+        "creation_time": {
+            "$date": "2024-05-20T00:00:00Z"
+        }
+    },
+    {
+        "product_name": "FitTrack",
+        "product_image": "https://i.ibb.co/dGjXv35/10175345-4338170.jpg",
+        "description": "FitTrack is a comprehensive fitness tracking app that helps users monitor their workouts, diet, and overall health. It provides personalized recommendations and insights to help users achieve their fitness goals effectively.",
+        "product_owner_info": {
+            "owner_name": "Frank Miller",
+            "owner_image": "https://i.ibb.co/nDdG3qK/2147960990.jpg",
+            "owner_email": "frankmiller@example.com"
+        },
+        "tags": [
+            "fitness",
+            "health",
+            "tracking"
+        ],
+        "external_links": [
+            "https://fittrack.com",
+            "https://github.com/fittrack"
+        ],
+        "status": "pending",
+        "upvote_count": 0,
+        "downvote_count": 0,
+        "creation_time": {
+            "$date": "2024-04-15T00:00:00Z"
+        }
+    },
+    {
+        "product_name": "TravelAssistant",
+        "product_image": "https://i.ibb.co/HYKNHXd/6210459-3194323.jpg",
+        "description": "TravelAssistant is your ultimate travel companion, offering detailed guides, itineraries, and tips for destinations around the world. With user-generated reviews and real-time updates, TravelAssistant helps you plan the perfect trip.",
+        "product_owner_info": {
+            "owner_name": "Bob Brown",
+            "owner_image": "https://i.ibb.co/0hd587z/2734.jpg",
+            "owner_email": "bobbrown@example.com"
+        },
+        "tags": [
+            "travel",
+            "guides",
+            "reviews"
+        ],
+        "external_links": [
+            "https://travelassistant.com",
+            "https://github.com/travelassistant"
+        ],
+        "status": "pending",
+        "upvote_count": 0,
+        "downvote_count": 0,
+        "creation_time": {
+            "$date": "2024-03-01T00:00:00Z"
+        }
+    },
+    {
+        "product_name": "HomeCook",
+        "product_image": "https://i.ibb.co/3p700bN/2148018383.jpg",
+        "description": "HomeCook brings the best recipes to your kitchen. It offers step-by-step cooking instructions, ingredient lists, and cooking tips from professional chefs. Whether you're a beginner or an experienced cook, HomeCook has something for everyone.",
+        "product_owner_info": {
+            "owner_name": "Henry Ford",
+            "owner_image": "https://i.ibb.co/HrCcNWP/2148612950.jpg",
+            "owner_email": "henryford@example.com"
+        },
+        "tags": [
+            "cooking",
+            "recipes",
+            "food"
+        ],
+        "external_links": [
+            "https://homecook.com",
+            "https://github.com/homecook"
+        ],
+        "status": "pending",
+        "upvote_count": 0,
+        "downvote_count": 0,
+        "creation_time": {
+            "$date": "2024-02-10T00:00:00Z"
+        }
+    },
+    {
+        "product_name": "TaskManager",
+        "product_image": "https://i.ibb.co/Bsd2rM6/10782977-19199383.jpg",
+        "description": "TaskManager is a comprehensive tool for managing projects and tasks efficiently. It offers features like task assignment, progress tracking, and team collaboration. The intuitive interface ensures ease of use, allowing users to focus on productivity.",
+        "product_owner_info": {
+            "owner_name": "Bob Brown",
+            "owner_image": "https://i.ibb.co/0hd587z/2734.jpg",
+            "owner_email": "bobbrown@example.com"
+        },
+        "tags": [
+            "productivity",
+            "management",
+            "collaboration"
+        ],
+        "external_links": [
+            "https://taskmanager.com",
+            "https://github.com/taskmanager"
+        ],
+        "status": "approved",
+        "upvote_count": 89,
+        "downvote_count": 5,
+        "creation_time": {
+            "$date": "2024-01-25T00:00:00Z"
+        }
+    },
+    {
+        "product_name": "PhotoEditor",
+        "product_image": "https://i.ibb.co/rGFkFRd/49873.jpg",
+        "description": "PhotoEditor is a powerful tool for editing images with ease. It provides advanced features such as layers, filters, and effects, allowing both professionals and amateurs to create stunning visuals.",
+        "product_owner_info": {
+            "owner_name": "Bob Brown",
+            "owner_image": "https://i.ibb.co/0hd587z/2734.jpg",
+            "owner_email": "bobbrown@example.com"
+        },
+        "tags": [
+            "photo",
+            "editing",
+            "design"
+        ],
+        "external_links": [
+            "https://photoeditor.com",
+            "https://github.com/photoeditor"
+        ],
+        "status": "pending",
+        "upvote_count": 0,
+        "downvote_count": 0,
+        "creation_time": {
+            "$date": "2024-01-25T00:00:00Z"
+        }
+    },
+    {
+        "product_name": "MarketAnalytics",
+        "product_image": "https://i.ibb.co/5vRcCkf/representation-user-experience-interface-design-computer.jpg",
+        "description": "MarketAnalytics offers robust tools for analyzing market trends and making informed decisions. With real-time data and advanced analytics, users can stay ahead of the competition and maximize their business strategies.",
+        "product_owner_info": {
+            "owner_name": "Henry Ford",
+            "owner_image": "https://i.ibb.co/HrCcNWP/2148612950.jpg",
+            "owner_email": "henryford@example.com"
+        },
+        "tags": [
+            "analytics",
+            "market",
+            "business"
+        ],
+        "external_links": [
+            "https://marketanalytics.com",
+            "https://github.com/marketanalytics"
+        ],
+        "status": "rejected",
+        "upvote_count": 0,
+        "downvote_count": 0,
+        "creation_time": {
+            "$date": "2024-01-25T00:00:00Z"
+        }
+    }
+]

@@ -58,6 +58,17 @@ const Details = () => {
             })
     }
 
+    const sendReport = async (id) => {
+        await axiosPublic.patch(`/reportProduct/${id}`)
+            .then(res => {
+                if (res.data.modifiedCount > 0) {
+                    toast.success('Report sent successfully', {
+                        position: "top-center",
+                        duration: 2000,
+                    })
+                }
+            })
+    }
 
     return (
         <div className="mt-24 max-w-7xl lg:mx-auto mx-5 md:mx-7">
@@ -90,7 +101,7 @@ const Details = () => {
                                     </div>
                                     <div className="bg-gray-300 md:mt-1 rounded-full">
                                         <div className="justify-center  flex items-center px-3 w-fit">
-                                            <IconButton><MdReportGmailerrorred className="text-xl text-red-500" /></IconButton>
+                                            <IconButton onClick={() => sendReport(data._id)}><MdReportGmailerrorred className="text-xl text-red-500" /></IconButton>
                                             <p className="font-poppins text-base md:text-lg text-red-500">Report</p>
                                         </div>
                                     </div>

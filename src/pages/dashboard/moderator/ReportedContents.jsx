@@ -1,11 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "../../../hooks/useAxiosPublic";
-import useAuth from "../../../hooks/useAuth";
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, ThemeProvider, createTheme } from "@mui/material";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import Title from "../../shared/Title";
 import { MdDelete } from "react-icons/md";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const montserratFont = createTheme({
     typography: {
@@ -31,19 +30,18 @@ const poppinsFont = createTheme({
 
 const ReportedContents = () => {
 
-    const axiosPublic = useAxiosPublic();
-    const { user } = useAuth();
+    const axiosSecure = useAxiosSecure();
 
     const { refetch, data } = useQuery({
         queryKey: ['products'],
         queryFn: async () => {
-            const response = await axiosPublic.get(`/userProducts/${user?.email}`)
+            const response = await axiosSecure.get(`/reportedProducts`)
             return response.data;
         }
     })
 
     const deleteProduct = async (id) => {
-        await axiosPublic.delete(`/deleteProducts/product?id=${id}`)
+        await axiosSecure.delete(`/deleteReportedProducts/product?id=${id}`)
             .then(res => {
                 if (res.data.deletedCount > 0) {
                     toast.success("Deleted successfully.")
