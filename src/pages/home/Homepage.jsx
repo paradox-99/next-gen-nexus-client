@@ -11,6 +11,7 @@ import useAuth from '../../hooks/useAuth';
 import Carts from '../../components/cart/Carts';
 import { CustomButton } from '../../components/basic/basicComponents';
 import Title from '../shared/Title';
+import ShowCoupons from './ShowCoupons';
 
 const Homepage = () => {
 
@@ -106,7 +107,7 @@ const Homepage = () => {
             </div>
             <div className="mt-24 max-w-7xl lg:mx-auto md:mx-7">
                 <Title title={"Treading Products"}></Title>
-                <div className=' grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5'>
+                <div className=' grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 place-content-center place-items-center h-full'>
                     {
                         products?.trendingProducts?.map((product) => <Carts
                             key={product._id}
@@ -119,6 +120,10 @@ const Homepage = () => {
                 <div className='my-10 text-center'>
                     <CustomButton href='/products'>Show all Products</CustomButton>
                 </div>
+            </div>
+            <div className="mt-24 max-w-7xl lg:mx-auto md:mx-7 ">
+                <Title title={"Get Discounts"}></Title>
+                <ShowCoupons></ShowCoupons>
             </div>
         </div>
     );

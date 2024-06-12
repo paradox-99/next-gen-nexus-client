@@ -22,7 +22,7 @@ const FeaturedCart = ({ product, userEmail, refetch }) => {
             <div className='p-4 flex flex-col md:flex-row gap-5'>
                 <div>
                     <figure>
-                        <img src={product.product_image} alt={product.product_name} className=' md:w-48 md:h-32' />
+                        <img src={product.product_image} alt={product.product_name} className='w-64 h-48 md:w-48 md:h-32' />
                     </figure>
                 </div>
                 <div>

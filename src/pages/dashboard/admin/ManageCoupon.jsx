@@ -135,7 +135,7 @@ const ManageCoupon = () => {
     }
 
     return (
-        <div className="flex flex-col w-full items-center md:px-7 lg:px-14 xl:px-20 mt-16">
+        <div className="flex flex-col w-full items-center md:px-7 lg:px-14 xl:px-20 xl:mt-16 lg:mt-14 md:mt-8 mt-5">
             <Title title={"Coupons"}></Title>
             <Paper sx={{ width: '100%', overflow: 'hidden' }}>
                 <TableContainer component={Paper} sx={{ maxHeight: 440 }}>
@@ -181,7 +181,7 @@ const ManageCoupon = () => {
                     </Table>
                 </TableContainer>
             </Paper>
-            <div className="absolute right-20 bottom-10">
+            <div className="absolute right-20 bottom-5">
                 <IconButton style={{ color: "black" }} onClick={openNewCoupon}>
                     <IoIosAddCircleOutline className="text-4xl" />
                 </IconButton>
@@ -218,7 +218,7 @@ const ManageCoupon = () => {
                 </div>
                 <ThemeProvider theme={poppinsFont}>
                     <DialogContent>
-                        <div className="flex gap-5">
+                        <div className="flex flex-col md:flex-row gap-5">
                             <CustomTextField
                                 autoFocus
                                 required

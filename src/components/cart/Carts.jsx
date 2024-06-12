@@ -19,7 +19,7 @@ const Carts = ({ product, userEmail, refetch }) => {
         <div>
             <Card sx={{ maxWidth: 410, height: "100%" }}>
                 <CardMedia
-                    sx={{ height: 200 }}
+                    sx={{ height: 200, width: 350 }}
                     image={product?.product_image}
                     title={product?.product_name}
                 />
