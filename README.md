@@ -2,14 +2,26 @@
 
 ## Overview
 
-<p>NextGenNexus is a platform to sell tech products. Here user can find their dedicated software products which they need. They can choose various of various category. Here also subscription plan is available which user can use for extra benefits.
+<p>NextGenNexus is a platform to sell tech products. Here user can find their dedicated software products which they need. They can choose various of various category. Here also subscription plan is available which user can use for extra benefits. Users can choose their products based on rating, reviews, and likes.
 </p>
 
 ## Link-
-- [Live-link (Client)](https://nextgennexus-50e37.web.app/)
+- [Live-link](https://nextgennexus-50e37.web.app/)
 <!-- - [Link (Server side)](https://next-gen-nexus.vercel.app/) -->
 
 <!-- - [Link (Server side GitHub)](https://github.com/programming-hero-web-course1/b9a12-server-side-paradox-99) -->
+
+## Technology used-
+- React
+- Tailwind
+- MUI
+- Firebase
+- Express JS
+- MongoDB
+- Node JS
+- JWT
+- Stripe
+- Vercel
 
 
 ## Features-
