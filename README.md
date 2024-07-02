@@ -1,12 +1,15 @@
-# NextGenNexus
+# <a href="https://nextgennexus-50e37.web.app/">NextGenNexus</a>
 
-### Client Side
+## Overview
+
+<p>NextGenNexus is a platform to sell tech products. Here user can find their dedicated software products which they need. They can choose various of various category. Here also subscription plan is available which user can use for extra benefits.
+</p>
 
 ## Link-
 - [Live-link (Client)](https://nextgennexus-50e37.web.app/)
-- [Link (Server side)](https://next-gen-nexus.vercel.app/)
+<!-- - [Link (Server side)](https://next-gen-nexus.vercel.app/) -->
 
-- [Link (Server side GitHub)](https://github.com/programming-hero-web-course1/b9a12-server-side-paradox-99)
+<!-- - [Link (Server side GitHub)](https://github.com/programming-hero-web-course1/b9a12-server-side-paradox-99) -->
 
 
 ## Features-
