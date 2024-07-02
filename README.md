@@ -37,10 +37,10 @@
 - admin can create, edit and delete coupon
 - jwt verification for users, moderators and admins
 
-UI frameworks:
+### UI frameworks:
 - MUI
 
-React tools: 
+### React tools: 
 - react swiper slider
 - react tag-input-component
 - MUI pie-chart
@@ -51,7 +51,14 @@ React tools:
 - tanstack query
 - react loader spinner
 
-Payment system: 
+### Payment system: 
 - Stripe
+
+### Run in Local
+<p> To run this project in your local system do- 
+<li>git fetch https://github.com/paradox-99/next-gen-nexus-client.git</li>
+<li>open folder</li>
+<li>in cmd run- npm install</li>
+</p>
 
 
